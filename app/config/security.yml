@@ -1,12 +1,33 @@
 security:
+    encoders:
+        Tommy\Pymnt\MainBundle\Entity\User:
+            algorithm: bcrypt
+            cost: 12
     providers:
-        in_memory:
-            memory: ~
-
+        administrators:
+            entity: { class: TommyPymntMainBundle:User, property: email }
+        default_provider:
+            memory:
+                users:
+                    ryan:  { password: ryanpass, roles: 'ROLE_USER' }
+                    admin: { password: kitten, roles: 'ROLE_ADMIN' }
     firewalls:
+        secured_area:
+            pattern:   ^/
+            anonymous: ~
+            form_login:
+                login_path: login
+                check_path: login_check
+            logout:
+                path:   /logout
+                target: /
+
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
 
         default:
             anonymous: ~
+    access_control:
+        - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/, roles: ROLE_USER }
