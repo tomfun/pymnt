@@ -1,0 +1,4 @@
+tommy_pymnt_main:
+    resource: "@TommyPymntMainBundle/Resources/config/routing.yml"
+    prefix:   /
+

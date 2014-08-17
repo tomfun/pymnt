@@ -1,0 +1,3 @@
+tommy_pymnt_main_homepage:
+    path:     /
+    defaults: { _controller: TommyPymntMainBundle:Default:index }
