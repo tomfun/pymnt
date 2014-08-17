@@ -2,10 +2,13 @@ login:
     path:     /login
     defaults: { _controller: TommyPymntMainBundle:Default:login }
 login_check:
-    path: /login_check
+    path:     /cabinet/login_check
 logout:
-    path: /logout
+    path:     /cabinet/logout
 
 tommy_pymnt_main_homepage:
     path:     /
     defaults: { _controller: TommyPymntMainBundle:Default:index }
+tommy_pymnt_main_cabinet:
+    path:     /cabinet
+    defaults: { _controller: TommyPymntMainBundle:Default:cabinet }

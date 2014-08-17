@@ -1,1 +1,15 @@
-Hello {{ name }}!
+{% extends '::base.html.twig' %}
+
+{% block body %}
+
+    <ul>
+        <li><a href="{{ path('login') }}">LOGIN</a></li>
+        <!--<li><a href="{{ path('logout') }}">LOGOUT</a></li>-->
+        <li><a href="{{ path('tommy_pymnt_main_cabinet') }}">CABINET</a></li>
+        <li><span>Hello <b>{{ name }}</b>!</span></li>
+    </ul>
+
+
+
+
+{% endblock %}

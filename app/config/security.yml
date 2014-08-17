@@ -4,22 +4,17 @@ security:
             algorithm: bcrypt
             cost: 12
     providers:
-        administrators:
+        main_provider:
             entity: { class: TommyPymntMainBundle:User, property: email }
-        default_provider:
-            memory:
-                users:
-                    ryan:  { password: ryanpass, roles: 'ROLE_USER' }
-                    admin: { password: kitten, roles: 'ROLE_ADMIN' }
     firewalls:
         secured_area:
-            pattern:   ^/
+            pattern:   ^/cabinet
             anonymous: ~
             form_login:
                 login_path: login
                 check_path: login_check
             logout:
-                path:   /logout
+                path:   /cabinet/logout
                 target: /
 
         dev:
@@ -30,4 +25,4 @@ security:
             anonymous: ~
     access_control:
         - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/, roles: ROLE_USER }
+        - { path: ^/cabinet, roles: ROLE_USER }

@@ -14,6 +14,16 @@ class DefaultController extends Controller
         return $this->render('TommyPymntMainBundle:Default:index.html.twig', array('name' => 'a!sdfasdf'));
     }
 
+    public function cabinetAction(Request $request)
+    {
+        $usr= $this->get('security.context')->getToken()->getUser();
+        $name = '. - ! hz ! - .';
+        if(is_object($usr) && $usr instanceof User){
+            $name = $usr->getEmail();
+        }
+        return $this->render('TommyPymntMainBundle:Default:cabinet.html.twig', array('name' => $name));
+    }
+
     public function loginAction(Request $request)
     {
         $session = $request->getSession();
