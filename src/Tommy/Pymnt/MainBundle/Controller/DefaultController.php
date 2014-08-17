@@ -29,12 +29,12 @@ class DefaultController extends Controller
 
     public function registerAction(Request $request)
     {
-        $usr = $this->getSecurity()->getToken()->getUser();
-        $name = '. - ! hz ! - .';
-        if (is_object($usr) && $usr instanceof User) {
-            $name = $usr->getEmail();
+        if($request->isMethod('post')){
+            var_dump('POST');
+            die('POST');
+        }else{
+            return $this->render('TommyPymntMainBundle:Default:register.html.twig');
         }
-        return $this->render('TommyPymntMainBundle:Default:register.html.twig', array('name' => $name));
     }
 
     public function cabinetAction(Request $request)
