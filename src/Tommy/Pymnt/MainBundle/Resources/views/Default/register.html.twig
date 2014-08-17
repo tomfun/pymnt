@@ -1,0 +1,19 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+
+    <ul>
+        <li><a href="{{ path('login') }}">LOGIN</a></li>
+        <li><a href="{{ path('tommy_pymnt_main_cabinet') }}">REGISTRATION</a></li>
+    </ul>
+    <form method="post" name="register_form" action="{{ path('register') }}">
+        <label>Email</label>
+        <input type="email"/>
+        <label>Pass</label>
+        <input type="password"/>
+    </form>
+
+
+
+
+{% endblock %}

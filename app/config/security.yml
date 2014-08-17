@@ -8,7 +8,7 @@ security:
             entity: { class: TommyPymntMainBundle:User, property: email }
     firewalls:
         secured_area:
-            pattern:   ^/cabinet
+            pattern:   ^/
             anonymous: ~
             form_login:
                 login_path: login

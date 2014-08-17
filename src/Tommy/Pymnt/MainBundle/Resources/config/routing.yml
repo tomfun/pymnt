@@ -9,6 +9,9 @@ logout:
 tommy_pymnt_main_homepage:
     path:     /
     defaults: { _controller: TommyPymntMainBundle:Default:index }
+register:
+    path:     /register
+    defaults: { _controller: TommyPymntMainBundle:Default:register }
 tommy_pymnt_main_cabinet:
     path:     /cabinet
     defaults: { _controller: TommyPymntMainBundle:Default:cabinet }
