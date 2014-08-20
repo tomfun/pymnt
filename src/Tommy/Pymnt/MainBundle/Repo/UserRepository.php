@@ -26,6 +26,15 @@ class UserRepository extends EntityRepository implements UserProviderInterface
     }
 
     /**
+     * @param $code
+     * @return null|User
+     */
+    public function getUserByCode($code)
+    {
+        return $this->findOneBy(['code' => $code]);
+    }
+
+    /**
      * Loads the user for the given username.
      *
      * This method must throw UsernameNotFoundException if the user is not

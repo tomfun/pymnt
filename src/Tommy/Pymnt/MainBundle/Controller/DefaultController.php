@@ -4,6 +4,8 @@ namespace Tommy\Pymnt\MainBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Security\Core\SecurityContextInterface;
 use Tommy\Pymnt\MainBundle\Entity\User;
 
@@ -17,22 +19,71 @@ class DefaultController extends Controller
         return $this->get('security.context');
     }
 
+    /**
+     * @return \Symfony\Component\Security\Core\Encoder\EncoderFactory
+     */
+    protected function getEncoderFactory()
+    {
+        return $this->get('security.encoder_factory');
+    }
+
+    /**
+     * @return \Swift_Mailer
+     */
+    protected function getMailer()
+    {
+        return $this->get('mailer');
+    }
+
     public function indexAction()
     {
         $user = $this->getSecurity()->getToken()->getUser();
-        var_dump($user);
         if ($user instanceof User) {
             return $this->redirect($this->generateUrl('tommy_pymnt_main_cabinet'));
         }
         return $this->render('TommyPymntMainBundle:Default:index.html.twig', array('name' => 'someone'));
     }
 
+    /**
+     * @param string $code
+     */
+    public function confirmationAction($code)
+    {
+        $userRepo = $this->get('user_repository');
+        $user = $userRepo->getUserByCode($code);
+        if($user){
+            $user->setConfirmed(true);
+            $this->getDoctrine()->getManager()->flush();
+            return new Response('Congratulations, now we trust you.');
+        }
+        return new Response('What are you doing man, maybe you forget some characters?!');
+    }
+
     public function registerAction(Request $request)
     {
-        if($request->isMethod('post')){
-            var_dump('POST');
-            die('POST');
-        }else{
+        if ($request->isMethod('post')) {
+            $user = new User();
+            $factory = $this->getEncoderFactory();
+            $encoder = $factory->getEncoder($user);
+            $user->setEmail($request->get('email'));
+            $user->setPlainPassword($encoder, $request->get('password'));
+
+            $link = $this->generateUrl('register_confirmation', ['code' => $user->getCode()], UrlGeneratorInterface::ABSOLUTE_URL);
+            $mailer = $this->getMailer();
+            $html = $this->renderView('TommyPymntMainBundle:Emails:cabinet.html.twig', array('confirmation' => $link));
+
+            $message = \Swift_Message::newInstance()
+                ->setSubject('Registration on Pymnt')
+                ->setTo($user->getEmail())
+                ->setFrom("tomfun1990@gmail.com")
+                ->setBody($html, 'text/html');
+            $res = $mailer->send($message);
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($user);
+            $em->flush();
+            return new Response('Check your mail.');
+        } else {
             return $this->render('TommyPymntMainBundle:Default:register.html.twig');
         }
     }

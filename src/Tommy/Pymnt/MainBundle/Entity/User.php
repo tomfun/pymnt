@@ -8,9 +8,11 @@
 namespace Tommy\Pymnt\MainBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\Encoder\PasswordEncoderInterface;
 use Symfony\Component\Security\Core\Role\Role;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Core\Util\SecureRandom;
+use Symfony\Component\Validator\Constraints\Email;
 
 /**
  * User
@@ -32,11 +34,22 @@ class User implements UserInterface, \Serializable
     /**
      * @var string $email
      *
-     * @ORM\Column(name="email", type="string", length=140, nullable=false)
+     * @ORM\Column(name="email", type="string", length=140, unique=true, nullable=false)
      */
     protected $email;
 
     /**
+     * Email confirmation code
+     *
+     * @var string $code
+     *
+     * @ORM\Column(name="code", type="string", length=88, nullable=false)
+     */
+    protected $code;
+
+    /**
+     * Encrypted password
+     *
      * @var string $hash
      *
      * @ORM\Column(name="hash", type="string", length=60, nullable=false)
@@ -51,17 +64,38 @@ class User implements UserInterface, \Serializable
     protected $createdAt;
 
     /**
+     * Salt for password encryption
+     *
      * @var string $hash
      *
      * @ORM\Column(name="salt", type="string", length=22, nullable=false)
      */
     protected $salt;
 
+    /**
+     * Whether email confirmed
+     *
+     * @var boolean $confirmed
+     *
+     * @ORM\Column(name="confirmed", type="boolean", nullable=false)
+     */
+    protected $confirmed;
+
     public function __construct()
     {
         $generator = new SecureRandom();
-        $this->salt = $generator->nextBytes(22);
+        $this->salt = substr(base64_encode($generator->nextBytes(22)), 0, 22);
+        $this->code = urlencode(base64_encode($generator->nextBytes(22)));
         $this->createdAt = new \DateTime();
+        $this->confirmed = false;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCode()
+    {
+        return $this->code;
     }
 
     /**
@@ -236,5 +270,60 @@ class User implements UserInterface, \Serializable
             $this->createdAt,
             $this->salt,
             ) = unserialize($serialized);
+    }
+
+    public function setPlainPassword(PasswordEncoderInterface $encoder, $password)
+    {
+        $password = $encoder->encodePassword($password, $this->getSalt());
+        $this->setHash($password);
+    }
+
+    /**
+     * Set code
+     *
+     * @param string $code
+     * @return User
+     */
+    public function setCode($code)
+    {
+        $this->code = $code;
+
+        return $this;
+    }
+
+    /**
+     * Set salt
+     *
+     * @param string $salt
+     * @return User
+     */
+    public function setSalt($salt)
+    {
+        $this->salt = $salt;
+
+        return $this;
+    }
+
+    /**
+     * Set confirmed
+     *
+     * @param boolean $confirmed
+     * @return User
+     */
+    public function setConfirmed($confirmed)
+    {
+        $this->confirmed = $confirmed;
+
+        return $this;
+    }
+
+    /**
+     * Get confirmed
+     *
+     * @return boolean 
+     */
+    public function getConfirmed()
+    {
+        return $this->confirmed;
     }
 }

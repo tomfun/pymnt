@@ -1,7 +1,15 @@
 parameters:
 #    tommy_pymnt_main.example.class: Tommy\Pymnt\MainBundle\Example
+    user_repository.class:            Tommy\Pymnt\MainBundle\Repo\UserRepository
+    user_repository.factory_argument: "TommyPymntMainBundle:User"
 
 services:
 #    tommy_pymnt_main.example:
 #        class: %tommy_pymnt_main.example.class%
 #        arguments: [@service_id, "plain_value", %parameter%]
+    user_repository:
+        class: %user_repository.class%
+        factory_service: doctrine.orm.entity_manager
+        factory_method:  getRepository
+        arguments:
+            - %user_repository.factory_argument%
