@@ -7,12 +7,12 @@
  */
 namespace Tommy\Pymnt\MainBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\Encoder\PasswordEncoderInterface;
 use Symfony\Component\Security\Core\Role\Role;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Core\Util\SecureRandom;
-use Symfony\Component\Validator\Constraints\Email;
 
 /**
  * User
@@ -57,7 +57,7 @@ class User implements UserInterface, \Serializable
     protected $hash;
 
     /**
-     * @var datetime $createdAt
+     * @var \Datetime $createdAt
      *
      * @ORM\Column(name="created_at", type="datetime", nullable=false)
      */
@@ -81,6 +81,51 @@ class User implements UserInterface, \Serializable
      */
     protected $confirmed;
 
+    /**
+     * @var boolean $informable
+     *
+     * @ORM\Column(name="informable", type="boolean", nullable=false)
+     */
+    protected $informable;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Phone", mappedBy="user")
+     */
+    protected $phones;
+
+    /**
+     * @return boolean
+     */
+    public function getInformable()
+    {
+        return $this->informable;
+    }
+
+    /**
+     * @param boolean $informable
+     */
+    public function setInformable($informable)
+    {
+        $this->informable = $informable;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPhones()
+    {
+        return $this->phones;
+    }
+
+    /**
+     * @param mixed $phones
+     */
+    public function setPhones($phones)
+    {
+        $this->phones = $phones;
+    }
+
+
     public function __construct()
     {
         $generator = new SecureRandom();
@@ -88,6 +133,7 @@ class User implements UserInterface, \Serializable
         $this->code = urlencode(base64_encode($generator->nextBytes(22)));
         $this->createdAt = new \DateTime();
         $this->confirmed = false;
+        $this->phones = new ArrayCollection();
     }
 
     /**
