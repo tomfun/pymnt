@@ -17,4 +17,8 @@ register_confirmation:
     defaults: { _controller: TommyPymntMainBundle:Default:confirmation }
 tommy_pymnt_main_cabinet:
     path:     /cabinet
-    defaults: { _controller: TommyPymntMainBundle:Default:cabinet }
+    defaults: { _controller: TommyPymntMainBundle:Cabinet:index }
+tommy_pymnt_main_cabinet_addform:
+    path:     /cabinet/additem
+    defaults: { _controller: TommyPymntMainBundle:Cabinet:addItem }
+

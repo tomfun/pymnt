@@ -13,3 +13,7 @@ services:
         factory_method:  getRepository
         arguments:
             - %user_repository.factory_argument%
+    pymnt_main.form.type.item:
+        class: Tommy\Pymnt\MainBundle\Service\ItemType
+        tags:
+            - { name: form.type, alias: item }

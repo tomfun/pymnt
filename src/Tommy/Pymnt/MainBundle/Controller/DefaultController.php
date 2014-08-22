@@ -97,16 +97,6 @@ class DefaultController extends Controller
         }
     }
 
-    public function cabinetAction()
-    {
-        $usr = $this->getSecurity()->getToken()->getUser();
-        $name = '. - ! hz ! - .';
-        if (is_object($usr) && $usr instanceof User) {
-            $name = $usr->getEmail();
-        }
-        return $this->render('TommyPymntMainBundle:Default:cabinet.html.twig', array('name' => $name));
-    }
-
     public function loginAction(Request $request)
     {
         $session = $request->getSession();
@@ -125,25 +115,7 @@ class DefaultController extends Controller
 
         // last username entered by the user
         $lastUsername = (null === $session) ? '' : $session->get(SecurityContextInterface::LAST_USERNAME);
-        /*
-                $factory = $this->get('security.encoder_factory');
-                $user = new User();
 
-                $encoder = $factory->getEncoder($user);
-                $password = $encoder->encodePassword('asdf', $user->getSalt());
-                $user->setHash($password);
-
-                var_dump($user);
-                var_dump('pass:');
-                var_dump($password);
-        //        var_dump(mcrypt_create_iv(22, MCRYPT_DEV_URANDOM));
-                var_dump('pass_hash:');
-                var_dump(password_hash('asdf', PASSWORD_BCRYPT,
-                    [
-                        'cost' => 12,
-                        'salt' => $user->getSalt()
-                    ]));
-        */
         return $this->render(
             'TommyPymntMainBundle:Default:login.html.twig',
             array(
@@ -153,4 +125,5 @@ class DefaultController extends Controller
             )
         );
     }
+
 }
