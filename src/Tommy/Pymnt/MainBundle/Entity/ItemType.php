@@ -35,7 +35,7 @@ class ItemType
     protected $class;
 
     /**
-     * @var Item[] $items;
+     * @var Item[] $items ;
      * @ORM\OneToMany(targetEntity="Item", mappedBy="type")
      */
     protected $items;

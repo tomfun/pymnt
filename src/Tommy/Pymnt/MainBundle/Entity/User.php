@@ -134,6 +134,7 @@ class User implements UserInterface, \Serializable
         $this->createdAt = new \DateTime();
         $this->confirmed = false;
         $this->phones = new ArrayCollection();
+        $this->informable = false;
     }
 
     /**
@@ -366,7 +367,7 @@ class User implements UserInterface, \Serializable
     /**
      * Get confirmed
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getConfirmed()
     {

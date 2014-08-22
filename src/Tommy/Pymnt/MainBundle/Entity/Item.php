@@ -30,7 +30,7 @@ class Item
      * @var ItemType $type
      *
      * @ORM\ManyToOne(targetEntity="ItemType", inversedBy="items")
-     * @ORM\JoinColumn(name="type_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="type_id", referencedColumnName="id", nullable=false)
      */
     protected $type;
 
@@ -70,6 +70,18 @@ class Item
     protected $closedAt;
 
     /**
+     * @var Part[]
+     * @ORM\OneToMany(targetEntity="Part", mappedBy="item")
+     */
+    protected $parts;
+
+    /**
+     * @var Spending[]
+     * @ORM\OneToMany(targetEntity="spending", mappedBy="item")
+     */
+    protected $spending;
+
+    /**
      * @return string
      */
     public function getCaption()
@@ -86,11 +98,83 @@ class Item
     }
 
     /**
-     * @return int
+     * @return \Datetime
      */
-    public function getId()
+    public function getClosedAt()
     {
-        return $this->id;
+        return $this->closedAt;
+    }
+
+    /**
+     * @param \Datetime $closedAt
+     */
+    public function setClosedAt($closedAt)
+    {
+        $this->closedAt = $closedAt;
+    }
+
+    /**
+     * @return \Datetime
+     */
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
+    }
+
+    /**
+     * @param \Datetime $createdAt
+     */
+    public function setCreatedAt($createdAt)
+    {
+        $this->createdAt = $createdAt;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCurrency()
+    {
+        return $this->currency;
+    }
+
+    /**
+     * @param string $currency
+     */
+    public function setCurrency($currency)
+    {
+        $this->currency = $currency;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getParts()
+    {
+        return $this->parts;
+    }
+
+    /**
+     * @param mixed $parts
+     */
+    public function setParts($parts)
+    {
+        $this->parts = $parts;
+    }
+
+    /**
+     * @return float
+     */
+    public function getPrice()
+    {
+        return $this->price;
+    }
+
+    /**
+     * @param float $price
+     */
+    public function setPrice($price)
+    {
+        $this->price = $price;
     }
 
     /**
@@ -109,4 +193,27 @@ class Item
         $this->type = $type;
     }
 
+    /**
+     * @return Spending[]
+     */
+    public function getSpending()
+    {
+        return $this->spending;
+    }
+
+    /**
+     * @param Spending[] $spending
+     */
+    public function setSpending($spending)
+    {
+        $this->spending = $spending;
+    }
+
+    /**
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
 }

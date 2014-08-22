@@ -33,13 +33,33 @@ class Label
      */
     protected $phone;
 
-
     /**
      * @var string $caption
      *
      * @ORM\Column(name="caption", type="string", length=80, nullable=false)
      */
     protected $caption;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Part", mappedBy="label")
+     */
+    protected $parts;
+
+    /**
+     * @return mixed
+     */
+    public function getParts()
+    {
+        return $this->parts;
+    }
+
+    /**
+     * @param mixed $parts
+     */
+    public function setParts($parts)
+    {
+        $this->parts = $parts;
+    }
 
     /**
      * @return string

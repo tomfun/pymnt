@@ -44,7 +44,7 @@ class Phone
      * @var User $user
      *
      * @ORM\ManyToOne(targetEntity="User", inversedBy="phones")
-     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id", nullable=false)
      */
     protected $user;
 

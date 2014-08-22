@@ -6,6 +6,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
+use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
+use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 use Symfony\Component\Security\Core\SecurityContextInterface;
 use Tommy\Pymnt\MainBundle\Entity\User;
 
@@ -37,15 +39,19 @@ class DefaultController extends Controller
 
     public function indexAction()
     {
-        $user = $this->getSecurity()->getToken()->getUser();
-        if ($user instanceof User) {
-            return $this->redirect($this->generateUrl('tommy_pymnt_main_cabinet'));
+        $token = $this->getSecurity()->getToken();
+        if($token instanceof TokenInterface){
+            $user = $token->getUser();
+            if ($user instanceof User) {
+                return $this->redirect($this->generateUrl('tommy_pymnt_main_cabinet'));
+            }
         }
         return $this->render('TommyPymntMainBundle:Default:index.html.twig', array('name' => 'someone'));
     }
 
     /**
      * @param string $code
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function confirmationAction($code)
     {
@@ -53,7 +59,10 @@ class DefaultController extends Controller
         $user = $userRepo->getUserByCode($code);
         if($user){
             $user->setConfirmed(true);
+            $user->setInformable(true);
             $this->getDoctrine()->getManager()->flush();
+            $token = new UsernamePasswordToken($user, null, "human", $user->getRoles());
+            $this->getSecurity()->setToken($token);
             return new Response('Congratulations, now we trust you.');
         }
         return new Response('What are you doing man, maybe you forget some characters?!');
@@ -82,15 +91,15 @@ class DefaultController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($user);
             $em->flush();
-            return new Response('Check your mail.');
+            return new Response($res ? 'Check your mail.' : 'We have some truble with your email.');
         } else {
             return $this->render('TommyPymntMainBundle:Default:register.html.twig');
         }
     }
 
-    public function cabinetAction(Request $request)
+    public function cabinetAction()
     {
-        $usr = $this->get('security.context')->getToken()->getUser();
+        $usr = $this->getSecurity()->getToken()->getUser();
         $name = '. - ! hz ! - .';
         if (is_object($usr) && $usr instanceof User) {
             $name = $usr->getEmail();
