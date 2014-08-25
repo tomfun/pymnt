@@ -11,7 +11,7 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
  * Date: 22.08.14
  * Time: 21:33
  */
-class ItemType extends AbstractType
+class ItemFormType extends AbstractType
 {
 
     /**
@@ -35,8 +35,11 @@ class ItemType extends AbstractType
 
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('caption', 'text')
-            ->add('price', 'currency')
-            ->add('currency', 'text');
+        $builder->add('type', 'entity', ['class' => 'Tommy\Pymnt\MainBundle\Entity\ItemType', 'property' => 'class'])
+            ->add('caption', 'text')
+            ->add('price', 'number')
+            ->add('currency', 'text')
+            //->add('closedAt', 'checkbox', ['required' => false])
+            ->add('submit', 'submit');
     }
 }

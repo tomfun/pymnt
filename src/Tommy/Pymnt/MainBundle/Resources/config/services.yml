@@ -2,6 +2,10 @@ parameters:
 #    tommy_pymnt_main.example.class: Tommy\Pymnt\MainBundle\Example
     user_repository.class:            Tommy\Pymnt\MainBundle\Repo\UserRepository
     user_repository.factory_argument: "TommyPymntMainBundle:User"
+    item_repository.class:            Tommy\Pymnt\MainBundle\Repo\ItemRepository
+    item_repository.factory_argument: "TommyPymntMainBundle:Item"
+    item_type_repository.class:            Tommy\Pymnt\MainBundle\Repo\ItemTypeRepository
+    item_type_repository.factory_argument: "TommyPymntMainBundle:ItemType"
 
 services:
 #    tommy_pymnt_main.example:
@@ -13,7 +17,19 @@ services:
         factory_method:  getRepository
         arguments:
             - %user_repository.factory_argument%
+    item_repository:
+        class: %item_repository.class%
+        factory_service: doctrine.orm.entity_manager
+        factory_method:  getRepository
+        arguments:
+            - %item_repository.factory_argument%
+    item_type_repository:
+        class: %item_type_repository.class%
+        factory_service: doctrine.orm.entity_manager
+        factory_method:  getRepository
+        arguments:
+            - %item_type_repository.factory_argument%
     pymnt_main.form.type.item:
-        class: Tommy\Pymnt\MainBundle\Service\ItemType
+        class: Tommy\Pymnt\MainBundle\Service\ItemFormType
         tags:
             - { name: form.type, alias: item }

@@ -64,3 +64,10 @@ class ItemType
         return $this->id;
     }
 }
+
+/*
+INSERT INTO `item_type` (`id`, `class`) VALUES
+(1, 'loan'),
+(2, 'thing'),
+(3, 'purchase');
+ */

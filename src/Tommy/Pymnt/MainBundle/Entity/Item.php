@@ -77,7 +77,7 @@ class Item
 
     /**
      * @var Spending[]
-     * @ORM\OneToMany(targetEntity="spending", mappedBy="item")
+     * @ORM\OneToMany(targetEntity="Spending", mappedBy="item")
      */
     protected $spending;
 
@@ -215,5 +215,10 @@ class Item
     public function getId()
     {
         return $this->id;
+    }
+
+    public function __construct()
+    {
+        $this->createdAt = new \DateTime();
     }
 }

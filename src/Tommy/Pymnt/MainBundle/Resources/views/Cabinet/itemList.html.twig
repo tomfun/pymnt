@@ -1,0 +1,24 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+
+    <ul>
+        <li><a href="{{ path('logout') }}">LOGOUT</a></li>
+        <li><a href="{{ path('tommy_pymnt_main_cabinet_addform') }}">Add new item</a></li>
+    </ul>
+
+    <table>
+        <thead>
+            <tr>
+                <td>price</td><td>type</td><td>caption</td><td>created</td><td>closed</td>
+            </tr>
+        </thead>
+        <tbody>
+        {% for item in items %}
+            <tr>
+                <td>{{ item.price }}&nbsp;{{ item.currency }}</td><td>{{ item.type.class }}</td><td>{{ item.caption }}</td><td>{{ item.createdAt|date }}</td><td>{% if item.closedAt is not null %}{{ item.closedAt }}{% else %}открыто{% endif %}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

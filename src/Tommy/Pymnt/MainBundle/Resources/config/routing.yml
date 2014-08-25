@@ -21,4 +21,11 @@ tommy_pymnt_main_cabinet:
 tommy_pymnt_main_cabinet_addform:
     path:     /cabinet/additem
     defaults: { _controller: TommyPymntMainBundle:Cabinet:addItem }
+tommy_pymnt_main_cabinet_addform_process:
+    path:     /cabinet/additemprocess
+    defaults: { _controller: TommyPymntMainBundle:Cabinet:addItemProcess }
+tommy_pymnt_main_cabinet_items:
+    path:     /cabinet/items
+    defaults: { _controller: TommyPymntMainBundle:Cabinet:itemList }
+
 
