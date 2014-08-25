@@ -9,6 +9,8 @@ use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 use Symfony\Component\Security\Core\SecurityContextInterface;
+use Tommy\Pymnt\MainBundle\Entity\Label;
+use Tommy\Pymnt\MainBundle\Entity\Phone;
 use Tommy\Pymnt\MainBundle\Entity\User;
 
 class DefaultController extends Controller
@@ -90,6 +92,18 @@ class DefaultController extends Controller
 
             $em = $this->getDoctrine()->getManager();
             $em->persist($user);
+
+            $phoneNumber = $request->get('phone');
+            $phone = new Phone();
+            $phone->setInformable(false);
+            $phone->setPhone($phoneNumber);
+            $phone->setUser($user);
+            $em->persist($phone);
+
+            $label = new Label();
+            $label->setPhone($phoneNumber);
+            $label->setCaption('I');
+            //todo: dodelat'
             $em->flush();
             return new Response($res ? 'Check your mail.' : 'We have some truble with your email.');
         } else {

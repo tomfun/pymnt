@@ -43,6 +43,16 @@ class Part
     protected $label;
 
     /**
+     * @ORM\OneToMany(targetEntity="Payment", mappedBy="partTo")
+     */
+    protected $payments;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Payment", mappedBy="partFrom")
+     */
+    protected $paymentsFrom;
+
+    /**
      * @var float $used
      *
      * @ORM\Column(name="used", type="decimal", nullable=false)
@@ -152,4 +162,37 @@ class Part
     {
         return $this->id;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getPayments()
+    {
+        return $this->payments;
+    }
+
+    /**
+     * @param mixed $payments
+     */
+    public function setPayments($payments)
+    {
+        $this->payments = $payments;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPaymentsFrom()
+    {
+        return $this->paymentsFrom;
+    }
+
+    /**
+     * @param mixed $paymentsFrom
+     */
+    public function setPaymentsFrom($paymentsFrom)
+    {
+        $this->paymentsFrom = $paymentsFrom;
+    }
+
 }

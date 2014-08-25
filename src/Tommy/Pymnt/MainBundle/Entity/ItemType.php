@@ -18,6 +18,9 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class ItemType
 {
+    const purchase = 'purchase';
+    const loan = 'loan';
+    const thing = 'thing';
     /**
      * @var integer $id
      *

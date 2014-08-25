@@ -89,9 +89,15 @@ class User implements UserInterface, \Serializable
     protected $informable;
 
     /**
+     * @var
      * @ORM\OneToMany(targetEntity="Phone", mappedBy="user")
      */
     protected $phones;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Label", mappedBy="user")
+     */
+    protected $labels;
 
     /**
      * @return boolean

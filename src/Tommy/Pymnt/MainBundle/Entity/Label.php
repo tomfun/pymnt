@@ -41,6 +41,15 @@ class Label
     protected $caption;
 
     /**
+     * Each user has own contact list
+     * @var User $user
+     *
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="labels")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id", nullable=false)
+     */
+    protected $user;
+
+    /**
      * @ORM\OneToMany(targetEntity="Part", mappedBy="label")
      */
     protected $parts;

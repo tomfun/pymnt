@@ -19,13 +19,16 @@ tommy_pymnt_main_cabinet:
     path:     /cabinet
     defaults: { _controller: TommyPymntMainBundle:Cabinet:index }
 tommy_pymnt_main_cabinet_addform:
-    path:     /cabinet/additem
+    path:     /cabinet/item/add
     defaults: { _controller: TommyPymntMainBundle:Cabinet:addItem }
 tommy_pymnt_main_cabinet_addform_process:
-    path:     /cabinet/additemprocess
+    path:     /cabinet/item/add/process
     defaults: { _controller: TommyPymntMainBundle:Cabinet:addItemProcess }
 tommy_pymnt_main_cabinet_items:
     path:     /cabinet/items
     defaults: { _controller: TommyPymntMainBundle:Cabinet:itemList }
+tommy_pymnt_main_cabinet_item_close:
+    path:     /cabinet/item/close/{id}
+    defaults: { _controller: TommyPymntMainBundle:Cabinet:itemClose }
 
 

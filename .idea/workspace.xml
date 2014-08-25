@@ -1,19 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="81eef256-6b2e-4ad9-a12f-2f978df84d4d" name="Default" comment="adding item [begin]">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Tommy/Pymnt/MainBundle/Repo/ItemRepository.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Tommy/Pymnt/MainBundle/Repo/ItemTypeRepository.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Tommy/Pymnt/MainBundle/Resources/views/Cabinet/itemList.html.twig" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Tommy/Pymnt/MainBundle/Service/ItemType.php" afterPath="$PROJECT_DIR$/src/Tommy/Pymnt/MainBundle/Service/ItemFormType.php" />
+    <list default="true" id="81eef256-6b2e-4ad9-a12f-2f978df84d4d" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Tommy/Pymnt/MainBundle/Entity/Payment.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Tommy/Pymnt/MainBundle/Controller/CabinetController.php" afterPath="$PROJECT_DIR$/src/Tommy/Pymnt/MainBundle/Controller/CabinetController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Tommy/Pymnt/MainBundle/Entity/Item.php" afterPath="$PROJECT_DIR$/src/Tommy/Pymnt/MainBundle/Entity/Item.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Tommy/Pymnt/MainBundle/Controller/DefaultController.php" afterPath="$PROJECT_DIR$/src/Tommy/Pymnt/MainBundle/Controller/DefaultController.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Tommy/Pymnt/MainBundle/Entity/ItemType.php" afterPath="$PROJECT_DIR$/src/Tommy/Pymnt/MainBundle/Entity/ItemType.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Tommy/Pymnt/MainBundle/Resources/views/Cabinet/index.html.twig" afterPath="$PROJECT_DIR$/src/Tommy/Pymnt/MainBundle/Resources/views/Cabinet/index.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/config/parameters.yml.dist" afterPath="$PROJECT_DIR$/app/config/parameters.yml.dist" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pymnt.iml" afterPath="$PROJECT_DIR$/pymnt.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Tommy/Pymnt/MainBundle/Entity/Label.php" afterPath="$PROJECT_DIR$/src/Tommy/Pymnt/MainBundle/Entity/Label.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Tommy/Pymnt/MainBundle/Entity/Part.php" afterPath="$PROJECT_DIR$/src/Tommy/Pymnt/MainBundle/Entity/Part.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Tommy/Pymnt/MainBundle/Entity/User.php" afterPath="$PROJECT_DIR$/src/Tommy/Pymnt/MainBundle/Entity/User.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Tommy/Pymnt/MainBundle/Resources/views/Cabinet/itemList.html.twig" afterPath="$PROJECT_DIR$/src/Tommy/Pymnt/MainBundle/Resources/views/Cabinet/itemList.html.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Tommy/Pymnt/MainBundle/Resources/views/Default/register.html.twig" afterPath="$PROJECT_DIR$/src/Tommy/Pymnt/MainBundle/Resources/views/Default/register.html.twig" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Tommy/Pymnt/MainBundle/Resources/config/routing.yml" afterPath="$PROJECT_DIR$/src/Tommy/Pymnt/MainBundle/Resources/config/routing.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Tommy/Pymnt/MainBundle/Resources/config/services.yml" afterPath="$PROJECT_DIR$/src/Tommy/Pymnt/MainBundle/Resources/config/services.yml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="pymnt.iws" />
@@ -37,21 +35,31 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="ItemFormType.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Tommy/Pymnt/MainBundle/Service/ItemFormType.php">
+      <file leaf-file-name="DefaultController.php" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Tommy/Pymnt/MainBundle/Controller/DefaultController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-24.375" vertical-offset="0" max-vertical-offset="1552">
-              <caret line="41" column="14" selection-start-line="41" selection-start-column="14" selection-end-line="41" selection-end-column="14" />
+            <state vertical-scroll-proportion="0.83244395" vertical-offset="660" max-vertical-offset="2932">
+              <caret line="105" column="28" selection-start-line="105" selection-start-column="28" selection-end-line="105" selection-end-column="28" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Spending.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Tommy/Pymnt/MainBundle/Entity/Spending.php">
+      <file leaf-file-name="Label.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Tommy/Pymnt/MainBundle/Entity/Label.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-16.875" vertical-offset="0" max-vertical-offset="2482">
-              <caret line="32" column="80" selection-start-line="32" selection-start-column="80" selection-end-line="32" selection-end-column="80" />
+            <state vertical-scroll-proportion="-25.625" vertical-offset="0" max-vertical-offset="2527">
+              <caret line="46" column="61" selection-start-line="46" selection-start-column="61" selection-end-line="46" selection-end-column="61" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="User.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Tommy/Pymnt/MainBundle/Entity/User.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-28.125" vertical-offset="540" max-vertical-offset="6502">
+              <caret line="91" column="11" selection-start-line="91" selection-start-column="11" selection-end-line="91" selection-end-column="11" />
               <folding />
             </state>
           </provider>
@@ -60,61 +68,8 @@
       <file leaf-file-name="routing.yml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Tommy/Pymnt/MainBundle/Resources/config/routing.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="105" max-vertical-offset="994">
-              <caret line="28" column="66" selection-start-line="28" selection-start-column="66" selection-end-line="28" selection-end-column="66" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Item.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Tommy/Pymnt/MainBundle/Entity/Item.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-36.541668" vertical-offset="2363" max-vertical-offset="4207">
-              <caret line="221" column="43" selection-start-line="221" selection-start-column="43" selection-end-line="221" selection-end-column="43" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="services.yml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Tommy/Pymnt/MainBundle/Resources/config/services.yml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1039">
-              <caret line="19" column="19" selection-start-line="19" selection-start-column="4" selection-end-line="19" selection-end-column="19" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ItemTypeRepository.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Tommy/Pymnt/MainBundle/Repo/ItemTypeRepository.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-5.0" vertical-offset="0" max-vertical-offset="1057">
-              <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.html.twig" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Tommy/Pymnt/MainBundle/Resources/views/Cabinet/index.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-4.375" vertical-offset="0" max-vertical-offset="700">
-              <caret line="7" column="72" selection-start-line="7" selection-start-column="72" selection-end-line="7" selection-end-column="72" />
-              <folding>
-                <element signature="e#91#97#0#Twig" expanded="true" />
-                <element signature="e#150#182#0#Twig" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="itemList.html.twig" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/Tommy/Pymnt/MainBundle/Resources/views/Cabinet/itemList.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5480769" vertical-offset="0" max-vertical-offset="865">
-              <caret line="18" column="239" selection-start-line="18" selection-start-column="239" selection-end-line="18" selection-end-column="239" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="55" max-vertical-offset="1456">
+              <caret line="30" column="38" selection-start-line="30" selection-start-column="38" selection-end-line="30" selection-end-column="38" />
               <folding />
             </state>
           </provider>
@@ -123,25 +78,67 @@
       <file leaf-file-name="CabinetController.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Tommy/Pymnt/MainBundle/Controller/CabinetController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-9.458333" vertical-offset="493" max-vertical-offset="1555">
-              <caret line="48" column="77" selection-start-line="48" selection-start-column="77" selection-end-line="48" selection-end-column="77" />
+            <state vertical-scroll-proportion="-29.458334" vertical-offset="523" max-vertical-offset="2302">
+              <caret line="82" column="38" selection-start-line="82" selection-start-column="38" selection-end-line="82" selection-end-column="38" />
               <folding>
                 <element signature="e#53#110#0#PHP" expanded="true" />
-                <element signature="e#606#648#1#PHP" expanded="true" />
-                <element signature="e#1084#1130#0#PHP" expanded="true" />
-                <element signature="e#1295#1344#0#PHP" expanded="true" />
-                <element signature="e#1483#1531#0#PHP" expanded="true" />
-                <element signature="e#1974#2022#0#PHP" expanded="true" />
+                <element signature="e#734#776#1#PHP" expanded="true" />
+                <element signature="e#1212#1258#0#PHP" expanded="true" />
+                <element signature="e#1423#1472#0#PHP" expanded="true" />
+                <element signature="e#1611#1659#0#PHP" expanded="true" />
+                <element signature="e#2102#2150#0#PHP" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ItemRepository.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Tommy/Pymnt/MainBundle/Repo/ItemRepository.php">
+      <file leaf-file-name="Payment.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Tommy/Pymnt/MainBundle/Entity/Payment.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-4.375" vertical-offset="0" max-vertical-offset="640">
-              <caret line="12" column="1" selection-start-line="12" selection-start-column="1" selection-end-line="12" selection-end-column="1" />
+            <state vertical-scroll-proportion="-3.75" vertical-offset="345" max-vertical-offset="3322">
+              <caret line="29" column="33" selection-start-line="29" selection-start-column="33" selection-end-line="29" selection-end-column="33" />
+              <folding>
+                <element signature="e#6#91#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="register.html.twig" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Tommy/Pymnt/MainBundle/Resources/views/Default/register.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-8.75" vertical-offset="0" max-vertical-offset="1237">
+              <caret line="14" column="47" selection-start-line="14" selection-start-column="47" selection-end-line="14" selection-end-column="47" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Part.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Tommy/Pymnt/MainBundle/Entity/Part.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-80.916664" vertical-offset="923" max-vertical-offset="3817">
+              <caret line="196" column="0" selection-start-line="196" selection-start-column="0" selection-end-line="196" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Item.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Tommy/Pymnt/MainBundle/Entity/Item.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="1.7647059" vertical-offset="135" max-vertical-offset="4255">
+              <caret line="3" column="7" selection-start-line="3" selection-start-column="3" selection-end-line="3" selection-end-column="7" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ItemType.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Tommy/Pymnt/MainBundle/Entity/ItemType.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-10.625" vertical-offset="0" max-vertical-offset="1950">
+              <caret line="22" column="24" selection-start-line="22" selection-start-column="24" selection-end-line="22" selection-end-column="24" />
               <folding />
             </state>
           </provider>
@@ -163,34 +160,35 @@
         <option value="$PROJECT_DIR$/src/Tommy/Pymnt/MainBundle/Resources/views/Default/cabinet.html.twig" />
         <option value="$PROJECT_DIR$/src/Tommy/Pymnt/MainBundle/Resources/views/Default/index.html.twig" />
         <option value="$PROJECT_DIR$/app/config/security.yml" />
-        <option value="$PROJECT_DIR$/src/Tommy/Pymnt/MainBundle/Resources/views/Default/register.html.twig" />
         <option value="$PROJECT_DIR$/src/Tommy/Pymnt/MainBundle/Resources/views/Emails/cabinet.html.twig" />
         <option value="$PROJECT_DIR$/web/app.php" />
         <option value="$PROJECT_DIR$/composer.json" />
         <option value="$PROJECT_DIR$/app/config/config.yml" />
         <option value="$PROJECT_DIR$/src/Tommy/Pymnt/MainBundle/Repo/UserRepository.php" />
-        <option value="$PROJECT_DIR$/src/Tommy/Pymnt/MainBundle/Entity/Label.php" />
-        <option value="$PROJECT_DIR$/src/Tommy/Pymnt/MainBundle/Entity/Part.php" />
         <option value="$PROJECT_DIR$/src/Tommy/Pymnt/MainBundle/Entity/Phone.php" />
         <option value="$PROJECT_DIR$/src/Tommy/Pymnt/MainBundle/Entity/Spending.php" />
-        <option value="$PROJECT_DIR$/src/Tommy/Pymnt/MainBundle/Entity/User.php" />
         <option value="$PROJECT_DIR$/src/Tommy/Pymnt/MainBundle/Resources/views/Default/login.html.twig" />
         <option value="$PROJECT_DIR$/src/Tommy/Pymnt/MainBundle/Service/MyToken.php" />
-        <option value="$PROJECT_DIR$/src/Tommy/Pymnt/MainBundle/Controller/DefaultController.php" />
         <option value="$PROJECT_DIR$/src/Tommy/Pymnt/MainBundle/Resources/views/Cabinet/addItem.html.twig" />
         <option value="$PROJECT_DIR$/app/config/parameters.yml" />
         <option value="$PROJECT_DIR$/app/config/parameters.yml.dist" />
-        <option value="$PROJECT_DIR$/src/Tommy/Pymnt/MainBundle/Entity/ItemType.php" />
         <option value="$PROJECT_DIR$/src/Tommy/Pymnt/MainBundle/Service/ItemType.php" />
         <option value="$PROJECT_DIR$/src/Tommy/Pymnt/MainBundle/Repo/ItemTypeRepository.php" />
-        <option value="$PROJECT_DIR$/src/Tommy/Pymnt/MainBundle/Entity/Item.php" />
         <option value="$PROJECT_DIR$/src/Tommy/Pymnt/MainBundle/Service/ItemFormType.php" />
         <option value="$PROJECT_DIR$/src/Tommy/Pymnt/MainBundle/Repo/ItemRepository.php" />
         <option value="$PROJECT_DIR$/src/Tommy/Pymnt/MainBundle/Resources/config/services.yml" />
-        <option value="$PROJECT_DIR$/src/Tommy/Pymnt/MainBundle/Resources/config/routing.yml" />
         <option value="$PROJECT_DIR$/src/Tommy/Pymnt/MainBundle/Resources/views/Cabinet/index.html.twig" />
-        <option value="$PROJECT_DIR$/src/Tommy/Pymnt/MainBundle/Controller/CabinetController.php" />
         <option value="$PROJECT_DIR$/src/Tommy/Pymnt/MainBundle/Resources/views/Cabinet/itemList.html.twig" />
+        <option value="$PROJECT_DIR$/src/Tommy/Pymnt/MainBundle/Resources/config/routing.yml" />
+        <option value="$PROJECT_DIR$/src/Tommy/Pymnt/MainBundle/Entity/Item.php" />
+        <option value="$PROJECT_DIR$/src/Tommy/Pymnt/MainBundle/Entity/ItemType.php" />
+        <option value="$PROJECT_DIR$/src/Tommy/Pymnt/MainBundle/Controller/CabinetController.php" />
+        <option value="$PROJECT_DIR$/src/Tommy/Pymnt/MainBundle/Entity/Part.php" />
+        <option value="$PROJECT_DIR$/src/Tommy/Pymnt/MainBundle/Entity/Payment.php" />
+        <option value="$PROJECT_DIR$/src/Tommy/Pymnt/MainBundle/Resources/views/Default/register.html.twig" />
+        <option value="$PROJECT_DIR$/src/Tommy/Pymnt/MainBundle/Entity/Label.php" />
+        <option value="$PROJECT_DIR$/src/Tommy/Pymnt/MainBundle/Entity/User.php" />
+        <option value="$PROJECT_DIR$/src/Tommy/Pymnt/MainBundle/Controller/DefaultController.php" />
       </list>
     </option>
   </component>
@@ -367,6 +365,44 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pymnt" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pymnt" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Tommy" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Pymnt" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MainBundle" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Resources" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Default" />
               <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -593,10 +629,10 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/Tommy/Pymnt/MainBundle/Entity" />
       <recent name="$PROJECT_DIR$/src/Tommy/Pymnt/MainBundle/Repo" />
       <recent name="$PROJECT_DIR$/src/Tommy/Pymnt/MainBundle/Resources/views/Cabinet" />
       <recent name="$PROJECT_DIR$/src/Tommy/Pymnt/MainBundle/Controller" />
-      <recent name="$PROJECT_DIR$/src/Tommy/Pymnt/MainBundle/Entity" />
       <recent name="$PROJECT_DIR$/src/Tommy/Pymnt/MainBundle/Resources/views/Emails" />
     </key>
   </component>
@@ -863,7 +899,7 @@
       <workItem from="1408643176813" duration="1942000" />
       <workItem from="1408645126377" duration="2873000" />
       <workItem from="1408726601402" duration="7545000" />
-      <workItem from="1408980447553" duration="5512000" />
+      <workItem from="1408980447553" duration="10737000" />
     </task>
     <task id="LOCAL-00001" summary="new bundle">
       <created>1408280094899</created>
@@ -897,11 +933,15 @@
       <created>1408731508060</created>
       <updated>1408731508060</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="adding item, list items">
+      <created>1408987035889</created>
+      <updated>1408987035889</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="55863000" />
+    <option name="totallyTimeSpent" value="61088000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="-4" width="1855" height="1084" extended-state="6" />
@@ -915,12 +955,13 @@
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Symfony2" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.39979756" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39979756" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3299595" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -932,7 +973,6 @@
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3299595" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3299595" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -958,14 +998,15 @@
     <MESSAGE value="registration, confirmation" />
     <MESSAGE value="entities" />
     <MESSAGE value="adding item [begin]" />
-    <option name="LAST_COMMIT_MESSAGE" value="adding item [begin]" />
+    <MESSAGE value="adding item, list items" />
+    <option name="LAST_COMMIT_MESSAGE" value="adding item, list items" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/src/Tommy/Pymnt/MainBundle/Controller/CabinetController.php</url>
-          <line>57</line>
+          <line>60</line>
           <option name="timeStamp" value="16" />
         </line-breakpoint>
       </breakpoints>
@@ -1007,11 +1048,11 @@
           <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
           <folding>
             <element signature="e#53#110#0#PHP" expanded="true" />
-            <element signature="e#606#648#1#PHP" expanded="true" />
-            <element signature="e#1084#1130#0#PHP" expanded="true" />
-            <element signature="e#1295#1344#0#PHP" expanded="true" />
-            <element signature="e#1483#1531#0#PHP" expanded="true" />
-            <element signature="e#1974#2022#0#PHP" expanded="true" />
+            <element signature="e#734#776#1#PHP" expanded="true" />
+            <element signature="e#1212#1258#0#PHP" expanded="true" />
+            <element signature="e#1423#1472#0#PHP" expanded="true" />
+            <element signature="e#1611#1659#0#PHP" expanded="true" />
+            <element signature="e#2102#2150#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1062,13 +1103,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="90" max-vertical-offset="315">
           <caret line="6" column="48" selection-start-line="6" selection-start-column="48" selection-end-line="6" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Tommy/Pymnt/MainBundle/Resources/views/Default/register.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.5" vertical-offset="0" max-vertical-offset="375">
-          <caret line="12" column="31" selection-start-line="12" selection-start-column="31" selection-end-line="12" selection-end-column="31" />
         </state>
       </provider>
     </entry>
@@ -1156,42 +1190,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="435" max-vertical-offset="1590">
           <caret line="29" column="24" selection-start-line="29" selection-start-column="24" selection-end-line="29" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Tommy/Pymnt/MainBundle/Entity/Label.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-21.875" vertical-offset="45" max-vertical-offset="1560">
-          <caret line="43" column="58" selection-start-line="43" selection-start-column="58" selection-end-line="43" selection-end-column="58" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Tommy/Pymnt/MainBundle/Entity/Phone.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-20.0" vertical-offset="135" max-vertical-offset="1605">
-          <caret line="46" column="80" selection-start-line="46" selection-start-column="80" selection-end-line="46" selection-end-column="80" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Tommy/Pymnt/MainBundle/Entity/Part.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.625" vertical-offset="270" max-vertical-offset="2415">
-          <caret line="32" column="80" selection-start-line="32" selection-start-column="80" selection-end-line="32" selection-end-column="80" />
-          <folding>
-            <element signature="e#6#91#0#PHP" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Tommy/Pymnt/MainBundle/Entity/User.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-30.0" vertical-offset="1245" max-vertical-offset="5655">
-          <caret line="136" column="33" selection-start-line="136" selection-start-column="33" selection-end-line="136" selection-end-column="33" />
-          <folding>
-            <element signature="e#134#182#0#PHP" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1206,14 +1205,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="939">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Tommy/Pymnt/MainBundle/Controller/DefaultController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="45" max-vertical-offset="1965">
-          <caret line="3" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1250,14 +1241,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Tommy/Pymnt/MainBundle/Entity/ItemType.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-11.875" vertical-offset="660" max-vertical-offset="1927">
-          <caret line="68" column="0" selection-start-line="68" selection-start-column="0" selection-end-line="68" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Tommy/Pymnt/MainBundle/Repo/ItemTypeRepository.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-5.0" vertical-offset="0" max-vertical-offset="1057">
@@ -1270,14 +1253,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-16.875" vertical-offset="0" max-vertical-offset="2482">
           <caret line="32" column="80" selection-start-line="32" selection-start-column="80" selection-end-line="32" selection-end-column="80" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Tommy/Pymnt/MainBundle/Entity/Item.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-36.541668" vertical-offset="2363" max-vertical-offset="4207">
-          <caret line="221" column="43" selection-start-line="221" selection-start-column="43" selection-end-line="221" selection-end-column="43" />
           <folding />
         </state>
       </provider>
@@ -1306,14 +1281,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Tommy/Pymnt/MainBundle/Resources/config/routing.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="105" max-vertical-offset="994">
-          <caret line="28" column="66" selection-start-line="28" selection-start-column="66" selection-end-line="28" selection-end-column="66" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Tommy/Pymnt/MainBundle/Resources/views/Cabinet/index.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-4.375" vertical-offset="0" max-vertical-offset="700">
@@ -1325,25 +1292,107 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Tommy/Pymnt/MainBundle/Resources/views/Cabinet/itemList.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-14.375" vertical-offset="0" max-vertical-offset="1320">
+          <caret line="23" column="102" selection-start-line="23" selection-start-column="102" selection-end-line="23" selection-end-column="102" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Tommy/Pymnt/MainBundle/Resources/config/routing.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="55" max-vertical-offset="1434">
+          <caret line="30" column="38" selection-start-line="30" selection-start-column="38" selection-end-line="30" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Tommy/Pymnt/MainBundle/Entity/ItemType.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-10.625" vertical-offset="0" max-vertical-offset="1950">
+          <caret line="22" column="24" selection-start-line="22" selection-start-column="24" selection-end-line="22" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Tommy/Pymnt/MainBundle/Controller/CabinetController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.458333" vertical-offset="493" max-vertical-offset="1555">
-          <caret line="48" column="77" selection-start-line="48" selection-start-column="77" selection-end-line="48" selection-end-column="77" />
+        <state vertical-scroll-proportion="-29.458334" vertical-offset="523" max-vertical-offset="2302">
+          <caret line="82" column="38" selection-start-line="82" selection-start-column="38" selection-end-line="82" selection-end-column="38" />
           <folding>
             <element signature="e#53#110#0#PHP" expanded="true" />
-            <element signature="e#606#648#1#PHP" expanded="true" />
-            <element signature="e#1084#1130#0#PHP" expanded="true" />
-            <element signature="e#1295#1344#0#PHP" expanded="true" />
-            <element signature="e#1483#1531#0#PHP" expanded="true" />
-            <element signature="e#1974#2022#0#PHP" expanded="true" />
+            <element signature="e#734#776#1#PHP" expanded="true" />
+            <element signature="e#1212#1258#0#PHP" expanded="true" />
+            <element signature="e#1423#1472#0#PHP" expanded="true" />
+            <element signature="e#1611#1659#0#PHP" expanded="true" />
+            <element signature="e#2102#2150#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Tommy/Pymnt/MainBundle/Resources/views/Cabinet/itemList.html.twig">
+    <entry file="file://$PROJECT_DIR$/src/Tommy/Pymnt/MainBundle/Resources/views/Default/register.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5480769" vertical-offset="0" max-vertical-offset="865">
-          <caret line="18" column="239" selection-start-line="18" selection-start-column="239" selection-end-line="18" selection-end-column="239" />
+        <state vertical-scroll-proportion="-8.75" vertical-offset="0" max-vertical-offset="1237">
+          <caret line="14" column="47" selection-start-line="14" selection-start-column="47" selection-end-line="14" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Tommy/Pymnt/MainBundle/Entity/Payment.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-3.75" vertical-offset="345" max-vertical-offset="3322">
+          <caret line="29" column="33" selection-start-line="29" selection-start-column="33" selection-end-line="29" selection-end-column="33" />
+          <folding>
+            <element signature="e#6#91#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Tommy/Pymnt/MainBundle/Entity/Part.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-80.916664" vertical-offset="923" max-vertical-offset="3817">
+          <caret line="196" column="0" selection-start-line="196" selection-start-column="0" selection-end-line="196" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Tommy/Pymnt/MainBundle/Entity/Item.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.7647059" vertical-offset="135" max-vertical-offset="4255">
+          <caret line="3" column="7" selection-start-line="3" selection-start-column="3" selection-end-line="3" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Tommy/Pymnt/MainBundle/Entity/Phone.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5923159" vertical-offset="0" max-vertical-offset="2437">
+          <caret line="42" column="0" selection-start-line="42" selection-start-column="0" selection-end-line="48" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Tommy/Pymnt/MainBundle/Entity/Label.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-25.625" vertical-offset="0" max-vertical-offset="2527">
+          <caret line="46" column="61" selection-start-line="46" selection-start-column="61" selection-end-line="46" selection-end-column="61" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Tommy/Pymnt/MainBundle/Entity/User.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-28.125" vertical-offset="540" max-vertical-offset="6502">
+          <caret line="91" column="11" selection-start-line="91" selection-start-column="11" selection-end-line="91" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Tommy/Pymnt/MainBundle/Controller/DefaultController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.83244395" vertical-offset="660" max-vertical-offset="2932">
+          <caret line="105" column="28" selection-start-line="105" selection-start-column="28" selection-end-line="105" selection-end-column="28" />
           <folding />
         </state>
       </provider>
