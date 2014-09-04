@@ -29,15 +29,21 @@ class RegistrationFormType extends AbstractType
         $resolver->setDefaults([
                 'data_class' => 'Tommy\Pymnt\MainBundle\Entity\User',
                 'cascade_validation' => true,
+                //'is_new' => true,
             ]
         );
     }
 
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('email', 'email',['error_bubbling' => true])
-            ->add('plainPassword', 'password',['error_bubbling' => true])
-            ->add('phone', 'text',['error_bubbling' => true])
-            ->add('submit', 'submit');
+        //$new = $options['is_new'];
+        $builder->add('email', 'email', ['error_bubbling' => true])
+            ->add('plainPassword', 'password', ['error_bubbling' => true])
+            ->add('phone', 'text', ['error_bubbling' => true])
+            ->add('save', 'submit', [
+                'attr' => [
+                    'class' => 'save',
+                ],
+            ]);
     }
 }

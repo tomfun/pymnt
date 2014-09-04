@@ -16,3 +16,5 @@ Tommy\Pymnt\MainBundle\Entity\User:
           max: 50
           minMessage: "Your password must be at least {{ limit }} characters long"
           maxMessage: "Your password cannot be longer than {{ limit }} characters long"
+
+# Tommy\Pymnt\MainBundle\Entity\Item:

@@ -9,9 +9,14 @@
 
     <table>
         <thead>
-            <tr>
-                <td>price</td><td>type</td><td>caption</td><td>created</td><td>closed</td><td>actions</td>
-            </tr>
+        <tr>
+            <td>price</td>
+            <td>type</td>
+            <td>caption</td>
+            <td>created</td>
+            <td>closed</td>
+            <td>actions</td>
+        </tr>
         </thead>
         <tbody>
         {% for item in items %}
@@ -21,7 +26,7 @@
                 <td>{{ item.caption }}</td>
                 <td>{{ item.createdAt|date }}</td>
                 <td>{% if item.closedAt is not null %}{{ item.closedAt }}{% else %}открыто{% endif %}</td>
-                <td><a href="{{ path('tommy_pymnt_main_cabinet_item_close', {'id': item.id}) }}">close</a> </td>
+                <td><a href="{{ path('tommy_pymnt_main_cabinet_item_close', {'id': item.id}) }}">close</a></td>
             </tr>
         {% endfor %}
         </tbody>

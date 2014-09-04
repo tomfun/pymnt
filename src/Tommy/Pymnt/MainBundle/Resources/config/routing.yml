@@ -30,5 +30,11 @@ tommy_pymnt_main_cabinet_items:
 tommy_pymnt_main_cabinet_item_close:
     path:     /cabinet/item/close/{id}
     defaults: { _controller: TommyPymntMainBundle:Cabinet:itemClose }
+tommy_pymnt_main_cabinet_part_index:
+    path:     /cabinet/part/{itemId}
+    defaults: { _controller: TommyPymntMainBundle:Cabinet:manageParts }
+tommy_pymnt_main_cabinet_part_process:
+    path:     /cabinet/part/process
+    defaults: { _controller: TommyPymntMainBundle:Cabinet:partProcess }
 
 

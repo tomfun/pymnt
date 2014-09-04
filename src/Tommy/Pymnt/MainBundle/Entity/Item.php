@@ -146,7 +146,7 @@ class Item
     }
 
     /**
-     * @return mixed
+     * @return Part[]
      */
     public function getParts()
     {
@@ -220,5 +220,16 @@ class Item
     public function __construct()
     {
         $this->createdAt = new \DateTime();
+    }
+
+    public function getIsClosed()
+    {
+        return $this->getClosedAt() !== null;
+    }
+
+    public function setIsClosed()
+    {
+        $this->setClosedAt(new \DateTime());
+        return $this;
     }
 }

@@ -42,7 +42,7 @@ class DefaultController extends Controller
     public function indexAction()
     {
         $token = $this->getSecurity()->getToken();
-        if($token instanceof TokenInterface){
+        if ($token instanceof TokenInterface) {
             $user = $token->getUser();
             if ($user instanceof User) {
                 return $this->redirect($this->generateUrl('tommy_pymnt_main_cabinet'));
@@ -59,7 +59,7 @@ class DefaultController extends Controller
     {
         $userRepo = $this->get('user_repository');
         $user = $userRepo->getUserByCode($code);
-        if($user){
+        if ($user) {
             $user->setConfirmed(true);
             $user->setInformable(true);
             $this->getDoctrine()->getManager()->flush();
@@ -76,7 +76,7 @@ class DefaultController extends Controller
             $user = new User();
             $form = $this->createForm('registration', $user);
             $form->handleRequest($request);
-            if(!$form->isValid()){
+            if (!$form->isValid()) {
                 return $this->render('TommyPymntMainBundle:Default:register.html.twig', ['form' => $form->createView()]);
             }
             $factory = $this->getEncoderFactory();
@@ -94,7 +94,7 @@ class DefaultController extends Controller
                 ->setFrom("tomfun1990@gmail.com")
                 ->setBody($html, 'text/html');
             $res = $mailer->send($message);
-            if($res){
+            if ($res) {
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($user);
 
@@ -113,11 +113,11 @@ class DefaultController extends Controller
 
                 $em->flush();
             }
-            return new Response($res ? 'Check your mail.' : 'We have some truble with your email.');
+            return new Response($res ? 'Check your mail.' : 'We have some trouble with your email.');
         } else {
             $form = $this->createForm('registration', null, [
-                    'action' => $this->generateUrl('register')
-                ])->createView();
+                'action' => $this->generateUrl('register')
+            ])->createView();
             return $this->render('TommyPymntMainBundle:Default:register.html.twig', ['form' => $form]);
         }
     }
