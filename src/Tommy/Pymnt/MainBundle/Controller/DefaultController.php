@@ -74,10 +74,15 @@ class DefaultController extends Controller
     {
         if ($request->isMethod('post')) {
             $user = new User();
+            $form = $this->createForm('registration', $user);
+            $form->handleRequest($request);
+            if(!$form->isValid()){
+                return $this->render('TommyPymntMainBundle:Default:register.html.twig', ['form' => $form->createView()]);
+            }
             $factory = $this->getEncoderFactory();
             $encoder = $factory->getEncoder($user);
-            $user->setEmail($request->get('email'));
-            $user->setPlainPassword($encoder, $request->get('password'));
+            //$user->setEmail($request->get('email'));
+            $user->setPlainPassword(null, $encoder);
 
             $link = $this->generateUrl('register_confirmation', ['code' => $user->getCode()], UrlGeneratorInterface::ABSOLUTE_URL);
             $mailer = $this->getMailer();
@@ -89,25 +94,31 @@ class DefaultController extends Controller
                 ->setFrom("tomfun1990@gmail.com")
                 ->setBody($html, 'text/html');
             $res = $mailer->send($message);
+            if($res){
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($user);
 
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($user);
+                $phoneNumber = $user->getPhone('phone');
+                $phone = new Phone();
+                $phone->setInformable(false);
+                $phone->setPhone($phoneNumber);
+                $phone->setUser($user);
+                $em->persist($phone);
 
-            $phoneNumber = $request->get('phone');
-            $phone = new Phone();
-            $phone->setInformable(false);
-            $phone->setPhone($phoneNumber);
-            $phone->setUser($user);
-            $em->persist($phone);
+                $label = new Label();
+                $label->setPhone($phoneNumber);
+                $label->setCaption('I');
+                $label->setUser($user);
+                $em->persist($label);
 
-            $label = new Label();
-            $label->setPhone($phoneNumber);
-            $label->setCaption('I');
-            //todo: dodelat'
-            $em->flush();
+                $em->flush();
+            }
             return new Response($res ? 'Check your mail.' : 'We have some truble with your email.');
         } else {
-            return $this->render('TommyPymntMainBundle:Default:register.html.twig');
+            $form = $this->createForm('registration', null, [
+                    'action' => $this->generateUrl('register')
+                ])->createView();
+            return $this->render('TommyPymntMainBundle:Default:register.html.twig', ['form' => $form]);
         }
     }
 

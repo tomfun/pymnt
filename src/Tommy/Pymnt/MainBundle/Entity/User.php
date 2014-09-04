@@ -99,6 +99,14 @@ class User implements UserInterface, \Serializable
      */
     protected $labels;
 
+    // -------------------------------------
+
+    /** @var  string $plainPassword */
+    protected $plainPassword;
+
+    /** @var  string $phone */
+    protected $phone;
+
     /**
      * @return boolean
      */
@@ -294,7 +302,7 @@ class User implements UserInterface, \Serializable
      */
     public function eraseCredentials()
     {
-
+        $this->plainPassword = null;
     }
 
     /**
@@ -325,10 +333,24 @@ class User implements UserInterface, \Serializable
             ) = unserialize($serialized);
     }
 
-    public function setPlainPassword(PasswordEncoderInterface $encoder, $password)
+    /**
+     * @param string|null $password
+     * @param PasswordEncoderInterface $encoder
+     * @return $this
+     */
+    public function setPlainPassword($password, PasswordEncoderInterface $encoder = null)
     {
-        $password = $encoder->encodePassword($password, $this->getSalt());
-        $this->setHash($password);
+        if ($encoder === null) {
+            $this->plainPassword = $password;
+        } else {
+            if ($password === null) {
+                $password = $encoder->encodePassword($this->plainPassword, $this->getSalt());
+            } else {
+                $password = $encoder->encodePassword($password, $this->getSalt());
+            }
+            $this->setHash($password);
+        }
+        return $this;
     }
 
     /**
@@ -378,5 +400,31 @@ class User implements UserInterface, \Serializable
     public function getConfirmed()
     {
         return $this->confirmed;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getPlainPassword()
+    {
+        return $this->plainPassword;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPhone()
+    {
+        return $this->phone;
+    }
+
+    /**
+     * @param string $phone
+     * @return $this
+     */
+    public function setPhone($phone)
+    {
+        $this->phone = $phone;
+        return $this;
     }
 }

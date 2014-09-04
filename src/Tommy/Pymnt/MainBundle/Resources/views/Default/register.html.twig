@@ -4,18 +4,8 @@
 
     <ul>
         <li><a href="{{ path('login') }}">LOGIN</a></li>
-        <li><a href="{{ path('tommy_pymnt_main_cabinet') }}">REGISTRATION</a></li>
     </ul>
-    <form method="post" name="register_form" action="{{ path('register') }}">
-        <label>Email</label>
-        <input name="email" type="email"/>
-        <label>Pass</label>
-        <input name="password" type="password"/>
-        <label>Phone</label>
-        <input name="phone" type="tel" required/>
-        <input type="submit">
-    </form>
-
+    {{ form(form) }}
 
 
 

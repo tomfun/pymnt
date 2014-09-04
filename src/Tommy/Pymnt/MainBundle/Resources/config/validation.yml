@@ -1,0 +1,18 @@
+Tommy\Pymnt\MainBundle\Entity\User:
+  properties:
+    email:
+      - Email:
+          message: The email {{ value }} is not a valid email.
+          checkMX: true
+          checkHost: false
+    phone:
+      - Regex:
+          pattern: "/^\+38\d{10,10}$/"
+          match:   true
+          message: Your phone must be +38XXXXXXXXXX format.
+    plainPassword:
+      - Length:
+          min: 6
+          max: 50
+          minMessage: "Your password must be at least {{ limit }} characters long"
+          maxMessage: "Your password cannot be longer than {{ limit }} characters long"

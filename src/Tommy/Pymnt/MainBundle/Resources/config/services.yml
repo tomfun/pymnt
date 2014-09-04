@@ -33,3 +33,7 @@ services:
         class: Tommy\Pymnt\MainBundle\Service\ItemFormType
         tags:
             - { name: form.type, alias: item }
+    pymnt_main.form.type.registration:
+        class: Tommy\Pymnt\MainBundle\Service\RegistrationFormType
+        tags:
+            - { name: form.type, alias: registration }
