@@ -11,6 +11,7 @@ parameters:
     mailer_user:       ~
     mailer_password:   ~
     mailer_from:       tomfun1990@gmail.com
+    mailer_port:       465
 
     locale:            en
     secret:            ThisTokenIsNotSoSecretChangeIt

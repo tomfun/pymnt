@@ -33,7 +33,9 @@ twig:
 assetic:
     debug:          "%kernel.debug%"
     use_controller: false
-    bundles:        [ ]
+    bundles:
+        - TommyPymntMainBundle
+
     #java: /usr/bin/java
     filters:
         cssrewrite: ~
@@ -72,3 +74,45 @@ swiftmailer:
     transport: "%mailer_transport%"
     sender_address : "%mailer_from%"
 
+# RequireJS
+hearsay_require_js:
+    require_js_src:      //cdnjs.cloudflare.com/ajax/libs/require.js/2.1.8/require.min.js
+    initialize_template: HearsayRequireJSBundle::initialize.html.twig
+    base_url:            js #папка в которую будут собираться наши, не полностью обработанные,  скрипты в «дев» версии в каталоге «web».
+    base_dir:            %kernel.root_dir%/../src/Tommy/Pymnt/MainBundle/Resources/assets/js # Required #путь к папке со скриптами в бандле
+
+    #пути к основным модулям и скриптам для requirejs.config()
+    #для внешних библиотек не забываем указывать «external: true»
+    paths:
+        main:
+            location: @TommyPymntMainBundle/Resources/assets/js/main
+        jquery:
+            location: //ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min
+            external: true
+        bootstrap:
+            location: //maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min
+            external: true
+    shim:
+        # Prototype
+        name:
+            deps:    [jquery]
+            exports: ~
+    options:
+        # Prototype
+        name:
+            value: ~ # Required
+    optimizer:
+        path:                    "%kernel.root_dir%/../node_modules/requirejs/bin/r.js" # Required
+        hide_unoptimized_assets: false #true - для продакшена прячем все не оптимизированные файлы для папки web
+        almond_path:             ~
+        exclude:                 []
+        modules:
+            # Prototype
+            name:
+                include: ~
+                exclude: ~
+        options:
+            # Prototype
+            name:
+                value: ~ # Required
+        timeout: 60

@@ -1,6 +1,12 @@
 {% extends '::base.html.twig' %}
 
 {% block body %}
+    {% javascripts filter='requirejs'
+    '@TommyPymntMainBundle/Resources/assets/js/main.js'
+    %}
+    {{ require_js_initialize({ 'main' : asset_url }) }}
+
+    {% endjavascripts %}
 
     <a href="{{ path('logout') }}">LOGOUT</a>
     <hr/>
