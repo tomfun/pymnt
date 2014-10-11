@@ -6,9 +6,6 @@ login_check:
 logout:
     path:     /cabinet/logout
 
-tommy_pymnt_main_homepage:
-    path:     /
-    defaults: { _controller: TommyPymntMainBundle:Default:index }
 register:
     path:     /register
     defaults: { _controller: TommyPymntMainBundle:Default:register }
@@ -37,4 +34,6 @@ tommy_pymnt_main_cabinet_part_process:
     path:     /cabinet/part/process
     defaults: { _controller: TommyPymntMainBundle:Cabinet:partProcess }
 
-
+tommy_pymnt:
+  resource: "@TommyPymntMainBundle/Controller"
+  type:     annotation

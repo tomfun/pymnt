@@ -12,9 +12,16 @@ use Symfony\Component\Security\Core\SecurityContextInterface;
 use Tommy\Pymnt\MainBundle\Entity\Label;
 use Tommy\Pymnt\MainBundle\Entity\Phone;
 use Tommy\Pymnt\MainBundle\Entity\User;
+use FOS\RestBundle\Controller\Annotations as Rest;
+use JMS\DiExtraBundle\Annotation as DI;
 
 class DefaultController extends Controller
 {
+    /**
+     * @DI\Inject("kernel")
+     */
+    protected $kernel;
+
     /**
      * @return \Symfony\Component\Security\Core\SecurityContext
      */
@@ -39,8 +46,14 @@ class DefaultController extends Controller
         return $this->get('mailer');
     }
 
+    /**
+     * @Rest\Get("/", name="tommy_pymnt_main_homepage")
+     * @Rest\View()
+     */
     public function indexAction()
     {
+
+        //var_dump($this->kernel);//usage !!
         $token = $this->getSecurity()->getToken();
         if ($token instanceof TokenInterface) {
             $user = $token->getUser();
@@ -48,7 +61,8 @@ class DefaultController extends Controller
                 return $this->redirect($this->generateUrl('tommy_pymnt_main_cabinet'));
             }
         }
-        return $this->render('TommyPymntMainBundle:Default:index.html.twig', array('name' => 'someone'));
+        //return $this->render('TommyPymntMainBundle:Default:index.html.twig', array('name' => 'someone'));
+        return ['name' => 'someone'];
     }
 
     /**
@@ -145,7 +159,7 @@ class DefaultController extends Controller
             'TommyPymntMainBundle:Default:login.html.twig',
             array(
                 // last username entered by the user
-                'name' => $lastUsername,
+                'name'  => $lastUsername,
                 'error' => $error,
             )
         );
