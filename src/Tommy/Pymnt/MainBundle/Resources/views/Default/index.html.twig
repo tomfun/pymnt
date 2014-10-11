@@ -1,7 +1,21 @@
 {% extends '::base.html.twig' %}
 
-{% block body %}
 
+{% block javascripts %}
+
+    {#
+        {% javascripts filter='requirejs' '@TommyPymntMainBundle/Resources/assets/js/main.js' %}
+        {{ asset_url }}
+        {{ require_js_initialize({ 'main' : asset_url }) }}
+        {% endjavascripts %}
+    #}
+    {% javascripts '@TommyPymntMainBundle/Resources/assets/js/*' %}
+    {{ require_js_initialize({ 'main' : asset_url }) }}
+    {% endjavascripts %}
+{% endblock %}
+
+
+{% block body %}
     <ul>
         <li><a href="{{ path('login') }}">LOGIN</a></li>
         <li><a href="{{ path('register') }}">REG</a></li>
