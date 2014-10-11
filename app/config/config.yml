@@ -58,7 +58,6 @@ swiftmailer:
     port:      "%mailer_port%"
     transport: "%mailer_transport%"
     sender_address : "%mailer_from%"
-
 # RequireJS
 hearsay_require_js:
     require_js_src:      js/require.js
@@ -108,3 +107,10 @@ assetic:
     use_controller:
         enabled: %kernel.debug%
         profiler: false
+sensio_framework_extra:
+    view:
+        annotations: false
+
+fos_rest:
+    view:
+        view_response_listener: true
