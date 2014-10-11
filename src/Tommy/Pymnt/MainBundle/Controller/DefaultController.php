@@ -13,9 +13,15 @@ use Tommy\Pymnt\MainBundle\Entity\Label;
 use Tommy\Pymnt\MainBundle\Entity\Phone;
 use Tommy\Pymnt\MainBundle\Entity\User;
 use FOS\RestBundle\Controller\Annotations as Rest;
+use JMS\DiExtraBundle\Annotation as DI;
 
 class DefaultController extends Controller
 {
+    /**
+     * @DI\Inject("kernel")
+     */
+    protected $kernel;
+
     /**
      * @return \Symfony\Component\Security\Core\SecurityContext
      */
@@ -46,6 +52,8 @@ class DefaultController extends Controller
      */
     public function indexAction()
     {
+
+        //var_dump($this->kernel);//usage !!
         $token = $this->getSecurity()->getToken();
         if ($token instanceof TokenInterface) {
             $user = $token->getUser();
