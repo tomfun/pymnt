@@ -29,21 +29,6 @@ twig:
     debug:            "%kernel.debug%"
     strict_variables: "%kernel.debug%"
 
-# Assetic Configuration
-assetic:
-    debug:          "%kernel.debug%"
-    use_controller: false
-    bundles:
-        - TommyPymntMainBundle
-
-    #java: /usr/bin/java
-    filters:
-        cssrewrite: ~
-        #closure:
-        #    jar: "%kernel.root_dir%/Resources/java/compiler.jar"
-        #yui_css:
-        #    jar: "%kernel.root_dir%/Resources/java/yuicompressor-2.4.7.jar"
-
 # Doctrine Configuration
 doctrine:
     dbal:
@@ -76,7 +61,7 @@ swiftmailer:
 
 # RequireJS
 hearsay_require_js:
-    require_js_src:      //cdnjs.cloudflare.com/ajax/libs/require.js/2.1.8/require.min.js
+    require_js_src:      js/require.js
     initialize_template: HearsayRequireJSBundle::initialize.html.twig
     base_url:            js #папка в которую будут собираться наши, не полностью обработанные,  скрипты в «дев» версии в каталоге «web».
     base_dir:            %kernel.root_dir%/../src/Tommy/Pymnt/MainBundle/Resources/assets/js # Required #путь к папке со скриптами в бандле
@@ -102,7 +87,7 @@ hearsay_require_js:
         name:
             value: ~ # Required
     optimizer:
-        path:                    "%kernel.root_dir%/../node_modules/requirejs/bin/r.js" # Required
+        path:                    %kernel.root_dir%/../node_modules/requirejs/bin/r.js # Required
         hide_unoptimized_assets: false #true - для продакшена прячем все не оптимизированные файлы для папки web
         almond_path:             ~
         exclude:                 []
@@ -116,3 +101,10 @@ hearsay_require_js:
             name:
                 value: ~ # Required
         timeout: 60
+
+# Assetic Configuration
+assetic:
+    debug: %kernel.debug%
+    use_controller:
+        enabled: %kernel.debug%
+        profiler: false
