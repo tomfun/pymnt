@@ -1,17 +1,8 @@
-login:
-    path:     /login
-    defaults: { _controller: TommyPymntMainBundle:Default:login }
 login_check:
     path:     /cabinet/login_check
 logout:
     path:     /cabinet/logout
 
-register:
-    path:     /register
-    defaults: { _controller: TommyPymntMainBundle:Default:register }
-register_confirmation:
-    path:     /confirmation/{code}
-    defaults: { _controller: TommyPymntMainBundle:Default:confirmation }
 tommy_pymnt_main_cabinet:
     path:     /cabinet
     defaults: { _controller: TommyPymntMainBundle:Cabinet:index }

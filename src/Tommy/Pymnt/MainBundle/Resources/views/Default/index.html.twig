@@ -3,11 +3,11 @@
 
 {% block javascripts %}
 
-    {% javascripts  filter='requirejs' '@TommyPymntMainBundle/Resources/assets/js/*' %}
+    {% javascripts  filter='requirejs' '@TommyPymntMainBundle/Resources/assets/js/main.js' %}
          {{ require_js_initialize({ 'main' : asset_url }) }}
     {% endjavascripts %}
     {% stylesheets  '@TommyPymntMainBundle/Resources/assets/scss/index.scss' filter='scss' %}
-    <link rel="stylesheet" href="{{ asset_url }}"/>
+        <link rel="stylesheet" href="{{ asset_url }}"/>
     {% endstylesheets %}
 {% endblock %}
 

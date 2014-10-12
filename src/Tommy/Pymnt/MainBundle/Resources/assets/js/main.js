@@ -1,10 +1,10 @@
 /**
  * Created by tomfun on 08.09.14.
  */
-define(['jquery'], function ($) {
+define('main', ['jquery'], function ($) {
         console.log($);
-        return {
-            test: "MY_ModUlE"
-        };
     }
 );
+require(['main'], function(m){
+    console.log(111);
+});

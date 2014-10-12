@@ -58,6 +58,8 @@ swiftmailer:
     port:      "%mailer_port%"
     transport: "%mailer_transport%"
     sender_address : "%mailer_from%"
+
+# Requirejs
 hearsay_require_js:
     require_js_src:      //cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js #js/require.js
     initialize_template: HearsayRequireJSBundle::initialize.html.twig
@@ -67,8 +69,8 @@ hearsay_require_js:
     #пути к основным модулям и скриптам для requirejs.config()
     #для внешних библиотек не забываем указывать «external: true»
     paths:
-#        main:
- #           location: @TommyPymntMainBundle/Resources/assets/js/main
+        main:
+            location: @TommyPymntMainBundle/Resources/assets/js/main
         jquery:
             location: //ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min
             external: true
@@ -89,16 +91,16 @@ hearsay_require_js:
         hide_unoptimized_assets: false #true - для продакшена прячем все не оптимизированные файлы для папки web
         almond_path:             ~
         exclude:                 []
-        modules:
+#        modules:
             # Prototype
-            name:
-                include: ~
-                exclude: ~
-        options:
+   #         name:
+ #               include: ~
+  #              exclude: ~
+#        options:
             # Prototype
-            name:
-                value: ~ # Required
-        timeout: 60
+ #           name:
+  #              value: ~ # Required
+        timeout: 120
 
 # Assetic Configuration
 assetic:
@@ -106,14 +108,15 @@ assetic:
     use_controller:
         enabled: %kernel.debug%
         profiler: false
-    node: /usr/bin/nodejs
+    #node: %nodejs.executable.path% #default value must work
     filters:
         scss: ~
-        sass: ~
+  #      sass: ~
+
+# Auto load templates with rest
 sensio_framework_extra:
     view:
         annotations: false
-
 fos_rest:
     view:
         view_response_listener: true

@@ -2,7 +2,9 @@
 
 namespace Tommy\Pymnt\MainBundle\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Doctrine\ORM\EntityManager;
+use Symfony\Component\Form\FormFactory;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
@@ -15,6 +17,7 @@ use Tommy\Pymnt\MainBundle\Entity\Phone;
 use Tommy\Pymnt\MainBundle\Entity\User;
 use FOS\RestBundle\Controller\Annotations as Rest;
 use JMS\DiExtraBundle\Annotation as DI;
+use Tommy\Pymnt\MainBundle\Repo\UserRepository;
 
 class DefaultController
 {
@@ -37,6 +40,30 @@ class DefaultController
     protected $mailer;
 
     /**
+     * @DI\Inject("router")
+     * @var \Symfony\Bundle\FrameworkBundle\Routing\Router
+     */
+    protected $router;
+
+    /**
+     * @DI\Inject("user_repository")
+     * @var UserRepository
+     */
+    protected $userRepository;
+
+    /**
+     * @DI\Inject("doctrine.orm.entity_manager")
+     * @var EntityManager
+     */
+    protected $manager;
+
+    /**
+     * @DI\Inject("form.factory")
+     * @var FormFactory
+     */
+    protected $formManager;
+
+    /**
      * @Rest\Get("/", name="tommy_pymnt_main_homepage")
      * @Rest\View()
      */
@@ -48,32 +75,33 @@ class DefaultController
         if ($token instanceof TokenInterface) {
             $user = $token->getUser();
             if ($user instanceof User) {
-                return $this->redirect($this->generateUrl('tommy_pymnt_main_cabinet'));
+                return new RedirectResponse($this->router->generate('tommy_pymnt_main_cabinet'));
             }
         }
-        //return $this->render('TommyPymntMainBundle:Default:index.html.twig', array('name' => 'someone'));
         return ['name' => 'someone'];
     }
 
     /**
-     * @param string $code
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @Rest\Get("/confirmation/{code}", name="register_confirmation")
      */
     public function confirmationAction($code)
     {
-        $userRepo = $this->get('user_repository');
-        $user = $userRepo->getUserByCode($code);
+        $user = $this->userRepository->getUserByCode($code);
         if ($user) {
             $user->setConfirmed(true);
             $user->setInformable(true);
-            $this->getDoctrine()->getManager()->flush();
+            $this->manager->flush();
             $token = new UsernamePasswordToken($user, null, "human", $user->getRoles());
-            $this->getSecurity()->setToken($token);
+            $this->security->setToken($token);
             return new Response('Congratulations, now we trust you.');
         }
         return new Response('What are you doing man, maybe you forget some characters?!');
     }
 
+    /**
+     * @Rest\Get("/register", name="register", methods={"GET", "POST"})
+     * @Rest\View()
+     */
     public function registerAction(Request $request)
     {
         if ($request->isMethod('post')) {
@@ -119,13 +147,17 @@ class DefaultController
             }
             return new Response($res ? 'Check your mail.' : 'We have some trouble with your email.');
         } else {
-            $form = $this->createForm('registration', null, [
-                'action' => $this->generateUrl('register')
+            $form = $this->$formManager->create('registration', null, [
+                'action' => $this->router->generate('register')
             ])->createView();
-            return $this->render('TommyPymntMainBundle:Default:register.html.twig', ['form' => $form]);
+            return ['form' => $form];
         }
     }
 
+    /**
+     * @Rest\Get("/login", name="login")
+     * @Rest\View()
+     */
     public function loginAction(Request $request)
     {
         $session = $request->getSession();
@@ -145,14 +177,11 @@ class DefaultController
         // last username entered by the user
         $lastUsername = (null === $session) ? '' : $session->get(SecurityContextInterface::LAST_USERNAME);
 
-        return $this->render(
-            'TommyPymntMainBundle:Default:login.html.twig',
-            array(
+        return [
                 // last username entered by the user
                 'name'  => $lastUsername,
                 'error' => $error,
-            )
-        );
+            ];
     }
 
 }

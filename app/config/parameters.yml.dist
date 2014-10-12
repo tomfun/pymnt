@@ -19,4 +19,9 @@ parameters:
     debug_toolbar:          true
     debug_redirects:        false
     use_assetic_controller: true
+
+    #gem install sass; gem which sass
     app.gempath: ~
+
+    #apt-get install nodejs
+    #nodejs.executable.path: ~
