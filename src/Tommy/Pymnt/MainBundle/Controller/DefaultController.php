@@ -8,6 +8,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
+use Symfony\Component\Security\Core\Encoder\EncoderFactoryInterface;
 use Symfony\Component\Security\Core\SecurityContextInterface;
 use Tommy\Pymnt\MainBundle\Entity\Label;
 use Tommy\Pymnt\MainBundle\Entity\Phone;
@@ -15,36 +16,25 @@ use Tommy\Pymnt\MainBundle\Entity\User;
 use FOS\RestBundle\Controller\Annotations as Rest;
 use JMS\DiExtraBundle\Annotation as DI;
 
-class DefaultController extends Controller
+class DefaultController
 {
     /**
-     * @DI\Inject("kernel")
+     * @DI\Inject("security.context")
+     * @var SecurityContextInterface
      */
-    protected $kernel;
+    protected $security;
 
     /**
-     * @return \Symfony\Component\Security\Core\SecurityContext
+     * @DI\Inject("security.encoder_factory")
+     * @var EncoderFactoryInterface
      */
-    protected function getSecurity()
-    {
-        return $this->get('security.context');
-    }
+    protected $securityFactory;
 
     /**
-     * @return \Symfony\Component\Security\Core\Encoder\EncoderFactory
+     * @DI\Inject("mailer")
+     * @var \Swift_Mailer
      */
-    protected function getEncoderFactory()
-    {
-        return $this->get('security.encoder_factory');
-    }
-
-    /**
-     * @return \Swift_Mailer
-     */
-    protected function getMailer()
-    {
-        return $this->get('mailer');
-    }
+    protected $mailer;
 
     /**
      * @Rest\Get("/", name="tommy_pymnt_main_homepage")
@@ -54,7 +44,7 @@ class DefaultController extends Controller
     {
 
         //var_dump($this->kernel);//usage !!
-        $token = $this->getSecurity()->getToken();
+        $token = $this->security->getToken();
         if ($token instanceof TokenInterface) {
             $user = $token->getUser();
             if ($user instanceof User) {
@@ -93,7 +83,7 @@ class DefaultController extends Controller
             if (!$form->isValid()) {
                 return $this->render('TommyPymntMainBundle:Default:register.html.twig', ['form' => $form->createView()]);
             }
-            $factory = $this->getEncoderFactory();
+            $factory = $this->securityFactory();
             $encoder = $factory->getEncoder($user);
             //$user->setEmail($request->get('email'));
             $user->setPlainPassword(null, $encoder);

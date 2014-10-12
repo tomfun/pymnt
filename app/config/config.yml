@@ -58,9 +58,8 @@ swiftmailer:
     port:      "%mailer_port%"
     transport: "%mailer_transport%"
     sender_address : "%mailer_from%"
-# RequireJS
 hearsay_require_js:
-    require_js_src:      js/require.js
+    require_js_src:      //cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js #js/require.js
     initialize_template: HearsayRequireJSBundle::initialize.html.twig
     base_url:            js #папка в которую будут собираться наши, не полностью обработанные,  скрипты в «дев» версии в каталоге «web».
     base_dir:            %kernel.root_dir%/../src/Tommy/Pymnt/MainBundle/Resources/assets/js # Required #путь к папке со скриптами в бандле
@@ -68,8 +67,8 @@ hearsay_require_js:
     #пути к основным модулям и скриптам для requirejs.config()
     #для внешних библиотек не забываем указывать «external: true»
     paths:
-        main:
-            location: @TommyPymntMainBundle/Resources/assets/js/main
+#        main:
+ #           location: @TommyPymntMainBundle/Resources/assets/js/main
         jquery:
             location: //ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min
             external: true
@@ -107,6 +106,10 @@ assetic:
     use_controller:
         enabled: %kernel.debug%
         profiler: false
+    node: /usr/bin/nodejs
+    filters:
+        scss: ~
+        sass: ~
 sensio_framework_extra:
     view:
         annotations: false

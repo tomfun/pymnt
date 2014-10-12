@@ -3,15 +3,12 @@
 
 {% block javascripts %}
 
-    {#
-        {% javascripts filter='requirejs' '@TommyPymntMainBundle/Resources/assets/js/main.js' %}
-        {{ asset_url }}
-        {{ require_js_initialize({ 'main' : asset_url }) }}
-        {% endjavascripts %}
-    #}
-    {% javascripts '@TommyPymntMainBundle/Resources/assets/js/*' %}
-    {{ require_js_initialize({ 'main' : asset_url }) }}
+    {% javascripts  filter='requirejs' '@TommyPymntMainBundle/Resources/assets/js/*' %}
+         {{ require_js_initialize({ 'main' : asset_url }) }}
     {% endjavascripts %}
+    {% stylesheets  '@TommyPymntMainBundle/Resources/assets/scss/index.scss' filter='scss' %}
+    <link rel="stylesheet" href="{{ asset_url }}"/>
+    {% endstylesheets %}
 {% endblock %}
 
 
