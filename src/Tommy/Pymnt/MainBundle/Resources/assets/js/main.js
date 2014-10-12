@@ -3,5 +3,8 @@
  */
 define(['jquery'], function ($) {
         console.log($);
+        return {
+            test: "MY_ModUlE"
+        };
     }
 );
