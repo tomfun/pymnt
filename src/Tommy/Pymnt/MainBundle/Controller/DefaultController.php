@@ -64,6 +64,12 @@ class DefaultController
     protected $formManager;
 
     /**
+     * @DI\Inject("twig")
+     * @var \Twig_Environment
+     */
+    protected $twig;
+
+    /**
      * @Rest\Get("/", name="tommy_pymnt_main_homepage")
      * @Rest\View()
      */
@@ -106,48 +112,50 @@ class DefaultController
     {
         if ($request->isMethod('post')) {
             $user = new User();
-            $form = $this->createForm('registration', $user);
+            $form = $form = $this->formManager->create('registration', $user, [
+                'action' => $this->router->generate('register')
+            ]);
             $form->handleRequest($request);
             if (!$form->isValid()) {
-                return $this->render('TommyPymntMainBundle:Default:register.html.twig', ['form' => $form->createView()]);
+                return ['form' => $form->createView()];
             }
-            $factory = $this->securityFactory();
-            $encoder = $factory->getEncoder($user);
+            $encoder = $this->securityFactory->getEncoder($user);
             //$user->setEmail($request->get('email'));
-            $user->setPlainPassword(null, $encoder);
+            $user->setPlainPassword(null, $encoder);//todo: make it logically
 
-            $link = $this->generateUrl('register_confirmation', ['code' => $user->getCode()], UrlGeneratorInterface::ABSOLUTE_URL);
-            $mailer = $this->getMailer();
-            $html = $this->renderView('TommyPymntMainBundle:Emails:cabinet.html.twig', array('confirmation' => $link));
+            $link = $this->router->generate('register_confirmation',
+                ['code' => $user->getCode()],
+                UrlGeneratorInterface::ABSOLUTE_URL
+            );
+            $html = $this->twig->render('TommyPymntMainBundle:Emails:cabinet.html.twig', ['confirmation' => $link]);
 
             $message = \Swift_Message::newInstance()
                 ->setSubject('Registration on Pymnt')
                 ->setTo($user->getEmail())
                 ->setFrom("tomfun1990@gmail.com")
                 ->setBody($html, 'text/html');
-            $res = $mailer->send($message);
+            $res = $this->mailer->send($message);
             if ($res) {
-                $em = $this->getDoctrine()->getManager();
-                $em->persist($user);
+                $this->manager->persist($user);
 
                 $phoneNumber = $user->getPhone('phone');
                 $phone = new Phone();
                 $phone->setInformable(false);
                 $phone->setPhone($phoneNumber);
                 $phone->setUser($user);
-                $em->persist($phone);
+                $this->manager->persist($phone);
 
                 $label = new Label();
                 $label->setPhone($phoneNumber);
                 $label->setCaption('I');
                 $label->setUser($user);
-                $em->persist($label);
+                $this->manager->persist($label);
 
-                $em->flush();
+                $this->manager->flush();
             }
             return new Response($res ? 'Check your mail.' : 'We have some trouble with your email.');
         } else {
-            $form = $this->$formManager->create('registration', null, [
+            $form = $this->formManager->create('registration', null, [
                 'action' => $this->router->generate('register')
             ])->createView();
             return ['form' => $form];
