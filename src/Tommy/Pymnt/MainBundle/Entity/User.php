@@ -99,6 +99,12 @@ class User implements UserInterface, \Serializable
      */
     protected $labels;
 
+    /**
+     * @var Item[]
+     * @ORM\OneToMany(targetEntity="Item", mappedBy="user")
+     */
+    protected $items;
+
     // -------------------------------------
 
     /** @var  string $plainPassword */
@@ -106,6 +112,17 @@ class User implements UserInterface, \Serializable
 
     /** @var  string $phone */
     protected $phone;
+
+    public function __construct()
+    {
+        $generator = new SecureRandom();
+        $this->salt = substr(base64_encode($generator->nextBytes(22)), 0, 22);
+        $this->code = urlencode(base64_encode($generator->nextBytes(22)));
+        $this->createdAt = new \DateTime();
+        $this->confirmed = false;
+        $this->phones = new ArrayCollection();
+        $this->informable = false;
+    }
 
     /**
      * @return boolean
@@ -124,7 +141,23 @@ class User implements UserInterface, \Serializable
     }
 
     /**
-     * @return mixed
+     * @return Item[]
+     */
+    public function getItems()
+    {
+        return $this->items;
+    }
+
+    /**
+     * @param Item[] $items
+     */
+    public function setItems($items)
+    {
+        $this->items = $items;
+    }
+
+    /**
+     * @return Phone[]
      */
     public function getPhones()
     {
@@ -132,23 +165,11 @@ class User implements UserInterface, \Serializable
     }
 
     /**
-     * @param mixed $phones
+     * @param Phone[] $phones
      */
     public function setPhones($phones)
     {
         $this->phones = $phones;
-    }
-
-
-    public function __construct()
-    {
-        $generator = new SecureRandom();
-        $this->salt = substr(base64_encode($generator->nextBytes(22)), 0, 22);
-        $this->code = urlencode(base64_encode($generator->nextBytes(22)));
-        $this->createdAt = new \DateTime();
-        $this->confirmed = false;
-        $this->phones = new ArrayCollection();
-        $this->informable = false;
     }
 
     /**

@@ -75,8 +75,6 @@ class DefaultController
      */
     public function indexAction()
     {
-
-        //var_dump($this->kernel);//usage !!
         $token = $this->security->getToken();
         if ($token instanceof TokenInterface) {
             $user = $token->getUser();

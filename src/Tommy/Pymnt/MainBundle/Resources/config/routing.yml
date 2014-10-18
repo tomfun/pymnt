@@ -3,28 +3,6 @@ login_check:
 logout:
     path:     /cabinet/logout
 
-tommy_pymnt_main_cabinet:
-    path:     /cabinet
-    defaults: { _controller: TommyPymntMainBundle:Cabinet:index }
-tommy_pymnt_main_cabinet_addform:
-    path:     /cabinet/item/add
-    defaults: { _controller: TommyPymntMainBundle:Cabinet:addItem }
-tommy_pymnt_main_cabinet_addform_process:
-    path:     /cabinet/item/add/process
-    defaults: { _controller: TommyPymntMainBundle:Cabinet:addItemProcess }
-tommy_pymnt_main_cabinet_items:
-    path:     /cabinet/items
-    defaults: { _controller: TommyPymntMainBundle:Cabinet:itemList }
-tommy_pymnt_main_cabinet_item_close:
-    path:     /cabinet/item/close/{id}
-    defaults: { _controller: TommyPymntMainBundle:Cabinet:itemClose }
-tommy_pymnt_main_cabinet_part_index:
-    path:     /cabinet/part/{itemId}
-    defaults: { _controller: TommyPymntMainBundle:Cabinet:manageParts }
-tommy_pymnt_main_cabinet_part_process:
-    path:     /cabinet/part/process
-    defaults: { _controller: TommyPymntMainBundle:Cabinet:partProcess }
-
 tommy_pymnt:
   resource: "@TommyPymntMainBundle/Controller"
   type:     annotation

@@ -9,6 +9,8 @@ use Tommy\Pymnt\MainBundle\Entity\ItemType;
 use Tommy\Pymnt\MainBundle\Entity\Part;
 use Tommy\Pymnt\MainBundle\Entity\Spending;
 use Tommy\Pymnt\MainBundle\Entity\User;
+use FOS\RestBundle\Controller\Annotations as Rest;
+use JMS\DiExtraBundle\Annotation as DI;
 
 class CabinetController extends Controller
 {
@@ -48,25 +50,45 @@ class CabinetController extends Controller
         return $user;
     }
 
+
+    /**
+     * @Rest\Get("/cabinet", name="tommy_pymnt_main_cabinet")
+     * @Rest\View()
+     */
     public function indexAction()
     {
         $usr = $this->getUser();
         $name = $usr->getEmail();
-        return $this->render('TommyPymntMainBundle:Cabinet:index.html.twig', array('name' => $name));
+        return ['name' => $name];
     }
 
+
+    /**
+     * @Rest\Get("/cabinet/items", name="tommy_pymnt_main_cabinet_items")
+     * @Rest\View()
+     */
     public function itemListAction()
     {
-        $items = $this->get('item_repository')->findAll();
-        return $this->render('TommyPymntMainBundle:Cabinet:itemList.html.twig', array('items' => $items));
+        $items = $this->get('item_repository')->getAllByUser($this->getUser());
+        return ['items' => $items];
     }
 
+
+    /**
+     * @Rest\Get("/cabinet/item/add", name="tommy_pymnt_main_cabinet_addform")
+     * @Rest\View()
+     */
     public function addItemAction()
     {
         $form = $this->getAddForm();
-        return $this->render('TommyPymntMainBundle:Cabinet:addItem.html.twig', array('form' => $form->createView()));
+        return  ['form' => $form->createView()];
     }
 
+
+    /**
+     * @Rest\Get("/cabinet/item/add/process", name="tommy_pymnt_main_cabinet_addform_process")
+     * @Rest\View()
+     */
     public function addItemProcessAction(Request $request)
     {
         $form = $this->getAddForm();
@@ -80,10 +102,14 @@ class CabinetController extends Controller
             $em->flush();
             return $this->redirect($this->generateUrl('tommy_pymnt_main_cabinet_part_index', ['itemId' => $data->getId(),]));
         } else {
-            return $this->render('TommyPymntMainBundle:Cabinet:addItem.html.twig', array('form' => $form->createView()));
+            return ['form' => $form->createView()];
         }
     }
 
+    /**
+     * @Rest\Get("/cabinet/part/{itemId}", name="tommy_pymnt_main_cabinet_part_index")
+     * @Rest\View()
+     */
     public function manageParts($itemId)
     {
         $item = $this->getItemRepo()->getOneById($itemId);
@@ -106,15 +132,23 @@ class CabinetController extends Controller
             $form = $this->createForm('part', $part, ['action' => $this->generateUrl('tommy_pymnt_main_cabinet_part_process')]);
             $metaParts[] = $form->createView();
         }
-        return $this->render('TommyPymntMainBundle:Cabinet:manageParts.html.twig', array('metaParts' => $metaParts));
+        return ['metaParts' => $metaParts];
         //todo: ajax, add part, remove part
     }
 
+    /**
+     * @Rest\Get("/cabinet/part/process", name="tommy_pymnt_main_cabinet_part_process")
+     * @Rest\View()
+     */
     public function partProcess(Request $request)
     {
         //todo
     }
 
+    /**
+     * @Rest\Get("/cabinet/item/close/{id}", name="tommy_pymnt_main_cabinet_item_close")
+     * @Rest\View()
+     */
     public function itemCloseAction($id)
     {
         $item = $this->getItemRepo()->find($id);

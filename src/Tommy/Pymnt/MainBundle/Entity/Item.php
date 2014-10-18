@@ -82,6 +82,14 @@ class Item
     protected $spending;
 
     /**
+     * @var User $user
+     *
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="items")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id", nullable=false)
+     */
+    protected $user;
+
+    /**
      * @return string
      */
     public function getCaption()
